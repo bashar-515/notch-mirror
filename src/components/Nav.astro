@@ -1,11 +1,27 @@
 ---
+type link = { href: string; label: string; isTitle?: boolean }
 
+const linkClass = "font-sans border";
+
+const links: link[] = [
+  { href: "/issues", label: "ISSUES" },
+  { href: "/events", label: "EVENTS" },
+  { href: "/", label: "NOTCH MAGAZINE", isTitle: true },
+  { href: "/stockists", label: "STOCKISTS" },
+  { href: "/shop", label: "SHOP" },
+];
+
+function getLinkClass(link: link): string {
+  if (link.isTitle) {
+    return `${linkClass} text-[64px]`;
+  }
+
+  return `${linkClass} text-[28px] ${Astro.url.pathname === link.href ? '' : 'hover:underline'}`;
+}
 ---
 
-<nav>
-  <a href="/issues/">ISSUES</a>
-  <a href="/events/">EVENTS</a>
-  <a class="title" href="/">NOTCH MAGAZINE</a>
-  <a href="/stockists/">STOCKISTS</a>
-  <a href="/shop/">SHOP</a>
+<nav class="bg-background text-primary flex justify-between items-center border">
+  {links.map((link) => (
+    <a href={link.href} class={getLinkClass(link)}>{link.label}</a>
+  ))}
 </nav>

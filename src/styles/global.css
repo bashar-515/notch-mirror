@@ -1,1 +1,77 @@
 @import "tailwindcss";
+
+body {
+  font-family: var(--font-serif)
+}
+
+@theme {
+  --color-primary: var(--primary);
+  --color-background: var(--background);
+
+  --font-serif: "ABC Arizona Serif", serif;
+  --font-sans: "ABC Gravity", sans-serif;
+}
+
+:root {
+  --primary: var(--international-klein-blue);
+  --background: var(--white-smoke);
+
+  /* color palette */
+  --white-smoke: oklch(0.9702 0 0);
+  --french-gray: oklch(0.8351 0.0171 250.87);
+  --international-klein-blue: oklch(0.2878 0.1994 264.05);
+}
+
+@font-face {
+  font-family: "ABC Arizona Serif";
+  src: url("/fonts/Arizona Regular/ABCArizonaSerif-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "ABC Arizona Serif";
+  src: url("/fonts/Arizona Regular/ABCArizonaSerif-RegularItalic.otf") format("opentype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "ABC Arizona Serif";
+  src: url("/fonts/Arizona Medium/ Arizona Serif/ABCArizonaSerif-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "ABC Arizona Serif";
+  src: url("/fonts/Arizona Medium/ Arizona Serif/ABCArizonaSerif-MediumItalic.otf") format("opentype");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "ABC Gravity";
+  src:
+    url("/fonts/Gravity/ Gravity/ABCGravity-Compressed.woff2") format("woff2"),
+    url("/fonts/Gravity/ Gravity/ABCGravity-Compressed.woff") format("woff"),
+    url("/fonts/Gravity/ Gravity/ABCGravity-Compressed.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "ABC Gravity";
+  src:
+    url("/fonts/Gravity/ Gravity/ABCGravity-CompressedItalic.woff2") format("woff2"),
+    url("/fonts/Gravity/ Gravity/ABCGravity-CompressedItalic.woff") format("woff"),
+    url("/fonts/Gravity/ Gravity/ABCGravity-CompressedItalic.otf") format("opentype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
