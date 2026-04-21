@@ -6,7 +6,9 @@ body {
 
 @theme {
   --color-primary: var(--primary);
-  --color-background: var(--background);
+  --color-secondary: var(--secondary);
+  --color-tertiary: var(--tertiary);
+
 
   --font-serif: "ABC Arizona Serif", serif;
   --font-sans: "ABC Gravity", sans-serif;
@@ -14,7 +16,8 @@ body {
 
 :root {
   --primary: var(--international-klein-blue);
-  --background: var(--white-smoke);
+  --secondary: var(--white-smoke);
+  --tertiary: var(--french-gray);
 
   /* color palette */
   --white-smoke: oklch(0.9702 0 0);

@@ -1,0 +1,51 @@
+---
+import type { Link } from '../types';
+
+const linksByRow: Link[][] = [
+  [
+    { href: "/about", label: "About" },
+    { href: "/issues", label: "Issues" },
+    { href: "/donate", label: "Support" },
+    { href: "/shop", label: "Shop" },
+  ],
+  [
+    { href: "/events", label: "Events" },
+    { href: "/stockists", label: "Stockists" },
+    { href: "/shop", label: "Subscribe" },
+    { href: "/submissions", label: "Submissions" },
+  ]
+]
+---
+
+<footer class="bg-tertiary w-full">
+  <div class="flex justify-between">
+    <div>
+      notch
+    </div>
+
+    <div class="text-primary">
+      {linksByRow.map((row) => (
+        <div class="flex gap-2">
+          {row.map((link) => (
+            <a href={link.href} class="hover:text-secondary">{link.label}</a>
+          ))}
+        </div>
+      ))}
+    </div>
+
+    <div>
+      <div class="flex gap-4">
+        <p>instagram</p>
+        <p>x</p>
+      </div>
+
+      <div>
+        2026, Notch Magazine, LLC
+      </div>
+    </div>
+
+    <div>
+      Sign up to recieve news and updates
+    </div>
+  </div>
+</footer>

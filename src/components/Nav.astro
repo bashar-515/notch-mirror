@@ -1,9 +1,11 @@
 ---
-type link = { href: string; label: string; isTitle?: boolean }
+import type { Link as BaseLink } from '../types';
 
-const linkClass = "font-sans border";
+type Link = BaseLink & { isTitle?: boolean };
 
-const links: link[] = [
+const linkClass = "font-sans";
+
+const links: Link[] = [
   { href: "/issues", label: "ISSUES" },
   { href: "/events", label: "EVENTS" },
   { href: "/", label: "NOTCH MAGAZINE", isTitle: true },
@@ -11,17 +13,19 @@ const links: link[] = [
   { href: "/shop", label: "SHOP" },
 ];
 
-function getLinkClass(link: link): string {
+function getLinkClass(link: Link): string {
   if (link.isTitle) {
-    return `${linkClass} text-[64px]`;
+    return `${linkClass} text-[72px]`;
   }
 
-  return `${linkClass} text-[28px] ${Astro.url.pathname === link.href ? '' : 'hover:underline'}`;
+  return `${linkClass} text-[36px] ${Astro.url.pathname === link.href ? '' : 'hover:underline'}`;
 }
 ---
 
-<nav class="bg-background text-primary flex justify-between items-center border">
-  {links.map((link) => (
-    <a href={link.href} class={getLinkClass(link)}>{link.label}</a>
-  ))}
+<nav class="bg-secondary text-primary flex justify-between items-center m-4">
+  <div class="w-full flex justify-between items-center px-30">
+    {links.map((link) => (
+      <a href={link.href} class={getLinkClass(link)}>{link.label}</a>
+    ))}
+  </div>
 </nav>
