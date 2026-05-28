@@ -1,14 +1,13 @@
 @import "tailwindcss";
 
 body {
-  font-family: var(--font-serif)
+  font-family: var(--font-serif);
 }
 
 @theme {
   --color-primary: var(--primary);
   --color-secondary: var(--secondary);
   --color-tertiary: var(--tertiary);
-
 
   --font-serif: "ABC Arizona Serif", serif;
   --font-sans: "ABC Gravity", sans-serif;
@@ -27,7 +26,8 @@ body {
 
 @font-face {
   font-family: "ABC Arizona Serif";
-  src: url("/fonts/Arizona Regular/ABCArizonaSerif-Regular.otf") format("opentype");
+  src: url("/fonts/Arizona Regular/ABCArizonaSerif-Regular.otf")
+    format("opentype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -35,7 +35,8 @@ body {
 
 @font-face {
   font-family: "ABC Arizona Serif";
-  src: url("/fonts/Arizona Regular/ABCArizonaSerif-RegularItalic.otf") format("opentype");
+  src: url("/fonts/Arizona Regular/ABCArizonaSerif-RegularItalic.otf")
+    format("opentype");
   font-weight: 400;
   font-style: italic;
   font-display: swap;
@@ -43,7 +44,8 @@ body {
 
 @font-face {
   font-family: "ABC Arizona Serif";
-  src: url("/fonts/Arizona Medium/ Arizona Serif/ABCArizonaSerif-Medium.otf") format("opentype");
+  src: url("/fonts/Arizona Medium/ Arizona Serif/ABCArizonaSerif-Medium.otf")
+    format("opentype");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -51,7 +53,8 @@ body {
 
 @font-face {
   font-family: "ABC Arizona Serif";
-  src: url("/fonts/Arizona Medium/ Arizona Serif/ABCArizonaSerif-MediumItalic.otf") format("opentype");
+  src: url("/fonts/Arizona Medium/ Arizona Serif/ABCArizonaSerif-MediumItalic.otf")
+    format("opentype");
   font-weight: 500;
   font-style: italic;
   font-display: swap;
@@ -71,9 +74,12 @@ body {
 @font-face {
   font-family: "ABC Gravity";
   src:
-    url("/fonts/Gravity/ Gravity/ABCGravity-CompressedItalic.woff2") format("woff2"),
-    url("/fonts/Gravity/ Gravity/ABCGravity-CompressedItalic.woff") format("woff"),
-    url("/fonts/Gravity/ Gravity/ABCGravity-CompressedItalic.otf") format("opentype");
+    url("/fonts/Gravity/ Gravity/ABCGravity-CompressedItalic.woff2")
+      format("woff2"),
+    url("/fonts/Gravity/ Gravity/ABCGravity-CompressedItalic.woff")
+      format("woff"),
+    url("/fonts/Gravity/ Gravity/ABCGravity-CompressedItalic.otf")
+      format("opentype");
   font-weight: 400;
   font-style: italic;
   font-display: swap;
