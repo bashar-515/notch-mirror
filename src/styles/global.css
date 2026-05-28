@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+html {
+  font-size: 1vw;
+}
+
 body {
   font-family: var(--font-serif);
 }
