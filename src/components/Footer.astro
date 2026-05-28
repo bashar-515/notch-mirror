@@ -1,5 +1,5 @@
 ---
-import type { Link } from '../types';
+import type { Link } from "../types";
 
 const linksByRow: Link[][] = [
   [
@@ -13,26 +13,31 @@ const linksByRow: Link[][] = [
     { href: "/stockists", label: "Stockists" },
     { href: "/shop", label: "Subscribe" },
     { href: "/submissions", label: "Submissions" },
-  ]
-]
+  ],
+];
 ---
 
 <footer class="bg-tertiary w-full">
   <div class="flex justify-between">
     <div>
       <a href="/">
-        <img src="/logo.svg" alt="" /> <!-- TODO: [q] what should "alt" be? -->
+        <!-- TODO: [q] what should "alt" be? -->
+        <img src="/logo.svg" class="h-16 w-auto" alt="" />
       </a>
     </div>
 
     <div class="text-primary">
-      {linksByRow.map((row) => (
-        <div class="flex gap-2">
-          {row.map((link) => (
-            <a href={link.href} class="hover:text-secondary">{link.label}</a>
-          ))}
-        </div>
-      ))}
+      {
+        linksByRow.map((row) => (
+          <div class="flex gap-2">
+            {row.map((link) => (
+              <a href={link.href} class="hover:text-secondary">
+                {link.label}
+              </a>
+            ))}
+          </div>
+        ))
+      }
     </div>
 
     <div>
@@ -41,13 +46,9 @@ const linksByRow: Link[][] = [
         <p>x</p>
       </div>
 
-      <div>
-        2026, Notch Magazine, LLC
-      </div>
+      <div>2026, Notch Magazine, LLC</div>
     </div>
 
-    <div>
-      Sign up to recieve news and updates
-    </div>
+    <div>Sign up to recieve news and updates</div>
   </div>
 </footer>
