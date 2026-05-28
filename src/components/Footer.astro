@@ -22,6 +22,9 @@ const linksByColumn: Link[][] = [
     { href: "/submissions", label: "Submissions" },
   ],
 ];
+
+const rowGroupClass = "flex flex-col gap-2";
+const rowClass = "text-sm font-medium";
 ---
 
 <footer class="bg-tertiary w-full px-18 py-6">
@@ -33,10 +36,10 @@ const linksByColumn: Link[][] = [
         </a>
       </div>
 
-      <div class="text-primary flex gap-4 self-center text-sm font-medium">
+      <div class={`text-primary flex gap-4 self-center ${rowClass}`}>
         {
           linksByColumn.map((column) => (
-            <div class="flex flex-col gap-2">
+            <div class={rowGroupClass}>
               {column.map((link) => (
                 <a href={link.href} class="hover:text-secondary">
                   {link.label}
@@ -50,7 +53,7 @@ const linksByColumn: Link[][] = [
 
     <div class="relative flex items-center justify-center self-stretch">
       <!-- mirror -->
-      <div class="flex flex-col items-center gap-2">
+      <div class={`items-center ${rowGroupClass}`}>
         <div class="flex justify-center gap-6">
           <a
             href="https://www.instagram.com/notch.magazine/"
@@ -72,7 +75,7 @@ const linksByColumn: Link[][] = [
         </div>
 
         <!-- mirror -->
-        <div class="invisible text-sm font-medium">foo</div>
+        <div class={`invisible ${rowClass}`}>foo</div>
       </div>
 
       <div class="absolute right-0 bottom-0 left-0 text-center text-sm">
