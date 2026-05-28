@@ -23,6 +23,10 @@ importers:
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
+    devDependencies:
+      '@astrojs/ts-plugin':
+        specifier: ^1.10.9
+        version: 1.10.9
 
 packages:
 
@@ -63,6 +67,9 @@ packages:
   '@astrojs/telemetry@3.3.2':
     resolution: {integrity: sha512-j8DNruA8ors99Al39RYZPJK4DC1bKkoNm93mAMuBhY9TCNC4R8n1q7ovFnJ5qhGh5Lsh7pa1gpQVpYpsJPeTHQ==}
     engines: {node: 18.20.8 || ^20.3.0 || >=22.0.0}
+
+  '@astrojs/ts-plugin@1.10.9':
+    resolution: {integrity: sha512-2pNc9EMXJcvYsmjQahYyqOiUNN9hMzgnxgIE/fZBLJAeOxPeOCSMa6BdngwV+bMgZDJcUSfC3qFt3+9abuUxtQ==}
 
   '@astrojs/yaml2ts@0.2.4':
     resolution: {integrity: sha512-8oddpOae35pJsXPQXhTkM0ypfKPskVsh2bCxRtbf7e+/Epw2nReakFYpLKjZMEr75CsoF203PMnCocpfz0s69A==}
@@ -2027,6 +2034,16 @@ snapshots:
       is-docker: 4.0.0
       is-wsl: 3.1.1
       which-pm-runs: 1.1.0
+
+  '@astrojs/ts-plugin@1.10.9':
+    dependencies:
+      '@astrojs/compiler': 2.13.1
+      '@astrojs/yaml2ts': 0.2.4
+      '@jridgewell/sourcemap-codec': 1.5.5
+      '@volar/language-core': 2.4.28
+      '@volar/typescript': 2.4.28
+      semver: 7.7.4
+      vscode-languageserver-textdocument: 1.0.12
 
   '@astrojs/yaml2ts@0.2.4':
     dependencies:
