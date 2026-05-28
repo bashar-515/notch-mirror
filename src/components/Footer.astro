@@ -1,4 +1,5 @@
 ---
+import Logo from "../components/icons/Logo.astro";
 import type { Link } from "../types";
 
 const linksByRow: Link[][] = [
@@ -20,9 +21,8 @@ const linksByRow: Link[][] = [
 <footer class="bg-tertiary w-full">
   <div class="flex justify-between">
     <div>
-      <a href="/">
-        <!-- TODO: [q] what should "alt" be? -->
-        <img src="/logo.svg" class="h-16 w-auto" alt="" />
+      <a href="/" class="hover:text-secondary text-white">
+        <Logo class="h-16 w-auto" />
       </a>
     </div>
 
