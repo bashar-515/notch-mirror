@@ -1,14 +1,10 @@
 ---
-import type { Link as BaseLink } from "../types";
-
-type Link = BaseLink & { isTitle?: boolean };
-
-const linkClass = "font-sans";
+import type { Link } from "../types";
 
 const links: Link[] = [
   { href: "/issues", label: "ISSUES" },
   { href: "/events", label: "EVENTS" },
-  { href: "/", label: "NOTCH MAGAZINE", isTitle: true },
+  { href: "/", label: "NOTCH MAGAZINE" },
   { href: "/stockists", label: "STOCKISTS" },
   { href: "/shop", label: "SHOP" },
 ];
@@ -23,9 +19,9 @@ const links: Link[] = [
         <a
           href={link.href}
           class={
-            link.isTitle
-              ? `${linkClass} text-6xl`
-              : `${linkClass} text-3xl ${Astro.url.pathname === link.href ? "" : "hover:underline"}`
+            link.href === "/"
+              ? "font-sans text-6xl"
+              : `font-sans text-3xl ${Astro.url.pathname === link.href ? "" : "hover:underline"}`
           }
         >
           {link.label}
