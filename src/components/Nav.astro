@@ -15,10 +15,10 @@ const links: Link[] = [
 
 function getLinkClass(link: Link): string {
   if (link.isTitle) {
-    return `${linkClass} text-[72px]`;
+    return `${linkClass} text-6xl`;
   }
 
-  return `${linkClass} text-[36px] ${Astro.url.pathname === link.href ? "" : "hover:underline"}`;
+  return `${linkClass} text-3xl ${Astro.url.pathname === link.href ? "" : "hover:underline"}`;
 }
 ---
 
