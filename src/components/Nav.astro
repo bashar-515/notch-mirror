@@ -22,7 +22,9 @@ function getLinkClass(link: Link): string {
 }
 ---
 
-<nav class="bg-secondary text-primary flex items-center justify-between">
+<nav
+  class="bg-secondary text-primary flex items-center justify-between border border-4 border-green-500"
+>
   <div class="flex w-full items-center justify-between px-18">
     {
       links.map((link) => (
