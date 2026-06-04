@@ -3,20 +3,26 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout>
-  <div class="flex flex-col gap-24">
+  <div class="flex flex-col gap-28">
     <div class="bg-secondary h-screen">
-      <span>NOTCH</span>
-      <span>Interweaving artistic genres, inviting unfamiliar encounters</span>
-      <span>a literary and arts magazine</span>
+      <p>NOTCH</p>
+      <p>Interweaving artistic genres, inviting unfamiliar encounters</p>
+      <p>a literary and arts magazine</p>
     </div>
 
-    <div class="bg-secondary h-screen">
-      <span
-        >Notch is a literary and arts magazine based in New York and Paris. We
-        publish biannually in print and online. Subscribe here.</span
-      >
+    <div
+      class="bg-secondary flex h-screen flex-col items-center justify-center gap-14 px-120 text-center text-4xl"
+    >
+      <p>
+        Notch is a literary and arts magazine based in New York and Paris. We
+        publish biannually in print and online. Subscribe <a
+          href="/shop"
+          class="hover:text-primary underline decoration-1 underline-offset-8"
+          >here</a
+        >.
+      </p>
 
-      <span>Submissions are currently closed.</span>
+      <p>Submissions are currently closed.</p>
     </div>
   </div>
 </Layout>

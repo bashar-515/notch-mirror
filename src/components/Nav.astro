@@ -20,7 +20,7 @@ const links: Link[] = [
         class={
           link.href === "/"
             ? "font-sans text-6xl"
-            : `font-sans text-3xl ${Astro.url.pathname === link.href ? "" : "hover:underline"}`
+            : `font-sans text-3xl ${Astro.url.pathname === link.href ? "" : "decoration-1 underline-offset-4 hover:underline"}`
         }
       >
         {link.label}
