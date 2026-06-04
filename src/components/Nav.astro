@@ -13,20 +13,18 @@ const links: Link[] = [
 <nav
   class="bg-secondary text-primary sticky top-0 flex items-center justify-between border border-4 border-green-500"
 >
-  <div class="flex w-full items-center justify-between px-18">
-    {
-      links.map((link) => (
-        <a
-          href={link.href}
-          class={
-            link.href === "/"
-              ? "font-sans text-6xl"
-              : `font-sans text-3xl ${Astro.url.pathname === link.href ? "" : "hover:underline"}`
-          }
-        >
-          {link.label}
-        </a>
-      ))
-    }
-  </div>
+  {
+    links.map((link) => (
+      <a
+        href={link.href}
+        class={
+          link.href === "/"
+            ? "font-sans text-6xl"
+            : `font-sans text-3xl ${Astro.url.pathname === link.href ? "" : "hover:underline"}`
+        }
+      >
+        {link.label}
+      </a>
+    ))
+  }
 </nav>
