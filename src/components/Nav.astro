@@ -31,11 +31,11 @@ const links: Link[] = [
 </nav>
 
 <script>
-  function updateNav() {
-    const nav = document.getElementById("nav");
+  const nav = document.getElementById("nav");
 
+  function update() {
     const start = (50 / 100) * window.innerHeight;
-    const end = (75 / 100) * window.innerHeight;
+    const end = (60 / 100) * window.innerHeight;
 
     const opacity = Math.min(
       1,
@@ -46,7 +46,7 @@ const links: Link[] = [
     nav!.style.pointerEvents = opacity < 0.1 ? "none" : "auto";
   }
 
-  updateNav();
+  update();
 
-  window.addEventListener("scroll", updateNav, { passive: true });
+  window.addEventListener("scroll", update, { passive: true });
 </script>
