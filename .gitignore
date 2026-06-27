@@ -22,11 +22,3 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
-
-# directories
-**/.terraform/
-
-
-# files
-**/terraform.tfvars
-**/terraform.tfstate*
