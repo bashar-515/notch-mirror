@@ -1,0 +1,80 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Logo from "../components/icons/Logo.astro";
+---
+
+<Layout>
+  <div
+    class="fixed top-1/2 left-1/2 -z-1 flex -translate-x-1/2 -translate-y-1/2 gap-62 text-white"
+  >
+    {Array.from({ length: 3 }).map(() => <Logo class="h-78" />)}
+  </div>
+
+  <div class="flex flex-col gap-28">
+    <div>
+      <div class="bg-secondary grid h-screen content-center px-72">
+        <p class="text-primary font-sans text-[16rem] leading-none">NOTCH</p>
+        <p class="font-times -mt-9 text-4xl italic">
+          Interweaving artistic genres, inviting unfamiliar encounters
+        </p>
+        <p class="text-primary font-times text-right text-2xl">
+          a literary and arts magazine
+        </p>
+      </div>
+
+      <div class="bg-secondary h-[25vh]"></div>
+    </div>
+
+    <div
+      class="bg-secondary flex h-[80vh] flex-col items-center justify-center gap-14 px-120 text-center text-4xl"
+    >
+      <p>
+        <span class="scroll-fade block opacity-0"
+          >Notch is a literary and arts magazine</span
+        >
+        <span class="scroll-fade block opacity-0"
+          >based in New York and Paris. We</span
+        >
+        <span class="scroll-fade block opacity-0"
+          >publish biannually in print and online.</span
+        >
+        <span class="scroll-fade block opacity-0"
+          >Subscribe <a
+            href="/shop"
+            class="hover:text-primary underline decoration-1 underline-offset-8"
+            >here</a
+          >.
+        </span>
+      </p>
+
+      <p>
+        <span class="scroll-fade block opacity-0"
+          >Submissions are currently closed.</span
+        >
+      </p>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  const spans = document.querySelectorAll<HTMLElement>(".scroll-fade");
+
+  function update() {
+    spans.forEach((span) => {
+      const rect = span.getBoundingClientRect();
+
+      const opacity = Math.min(
+        1,
+        Math.max(0, (0.75 * window.innerHeight - rect.top) / rect.height),
+      );
+
+      span.style.opacity = String(opacity);
+      span.style.pointerEvents = opacity < 0.05 ? "none" : "auto";
+    });
+  }
+
+  update();
+
+  window.addEventListener("scroll", update, { passive: true });
+  window.addEventListener("resize", update, { passive: true });
+</script>

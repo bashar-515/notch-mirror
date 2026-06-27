@@ -1,0 +1,51 @@
+---
+import type { Link } from "../types";
+
+const links: Link[] = [
+  { href: "/issues", label: "ISSUES" },
+  { href: "/events", label: "EVENTS" },
+  { href: "/", label: "NOTCH MAGAZINE" },
+  { href: "/stockists", label: "STOCKISTS" },
+  { href: "/shop", label: "SHOP" },
+];
+---
+
+<nav
+  class="bg-secondary text-primary pointer-events-none fixed inset-x-0 top-0 flex items-center justify-between px-27 py-3 opacity-0"
+>
+  {
+    links.map((link) => (
+      <a
+        href={link.href}
+        class={
+          link.href === "/"
+            ? "font-sans text-6xl"
+            : `font-sans text-3xl ${Astro.url.pathname === link.href ? "" : "decoration-1 underline-offset-4 hover:underline"}`
+        }
+      >
+        {link.label}
+      </a>
+    ))
+  }
+</nav>
+
+<script>
+  const nav = document.querySelector("nav");
+
+  function update() {
+    const start = (100 / 100) * window.innerHeight;
+    const end = (125 / 100) * window.innerHeight - nav!.offsetHeight;
+
+    const opacity = Math.min(
+      1,
+      Math.max(0, (window.scrollY - start) / (end - start)),
+    );
+
+    nav!.style.opacity = String(opacity);
+    nav!.style.pointerEvents = opacity < 0.05 ? "none" : "auto";
+  }
+
+  update();
+
+  window.addEventListener("scroll", update, { passive: true });
+</script>

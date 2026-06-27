@@ -1,0 +1,90 @@
+---
+import Instagram from "../components/icons/Instagram.astro";
+import Logo from "../components/icons/Logo.astro";
+import X from "../components/icons/X.astro";
+import type { Link } from "../types";
+
+const linksByColumn: Link[][] = [
+  [
+    { href: "/about", label: "About" },
+    { href: "/events", label: "Events" },
+  ],
+  [
+    { href: "/issues", label: "Issues" },
+    { href: "/stockists", label: "Stockists" },
+  ],
+  [
+    { href: "/donate", label: "Support" },
+    { href: "/shop", label: "Subscribe" },
+  ],
+  [
+    { href: "/shop", label: "Shop" },
+    { href: "/submissions", label: "Submit" },
+  ],
+];
+---
+
+<footer
+  class="bg-tertiary font-times grid w-full grid-cols-3 items-center px-24 py-6"
+>
+  <div class="flex">
+    <a href="/"
+      ><Logo
+        class="hover:text-secondary h-32 w-auto text-white transition-colors duration-200"
+      /></a
+    >
+
+    <div class="ml-auto flex gap-4 self-center">
+      {
+        linksByColumn.map((column) => (
+          <div class="flex flex-col gap-2">
+            {column.map((link) => (
+              <a
+                href={link.href}
+                class="text-primary hover:text-secondary text-lg font-bold"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <div class="text-center">
+    <div class="m-8 flex justify-center gap-6">
+      <a
+        href="https://www.instagram.com/notch.magazine/"
+        rel="noopener noreferrer"
+        class="hover:text-secondary font-bold text-white transition-colors duration-200"
+        ><Instagram class="h-7 w-auto" /></a
+      >
+      <a
+        href="https://x.com/notch_magazine"
+        rel="noopener noreferrer"
+        class="hover:text-secondary text-white transition-colors duration-200"
+        ><X class="h-7 w-auto" /></a
+      >
+    </div>
+
+    <p class="text-lg">
+      © <span class="italic">2026, Notch Magazine, LLC</span>
+    </p>
+  </div>
+
+  <div class="flex flex-col gap-1 justify-self-end">
+    <p class="px-2 text-lg italic">Sign up to recieve news and updates</p>
+
+    <input
+      type="email"
+      placeholder="Email"
+      class="border-secondary rounded-sm border px-6 py-1 focus:outline-none"
+    />
+    <button
+      type="button"
+      class="hover:bg-secondary text-primary rounded-sm bg-white py-1 transition-colors duration-200"
+      >Sign up</button
+    >
+  </div>
+</footer>
