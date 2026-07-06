@@ -8,10 +8,15 @@ import "../styles/global.css";
 <html lang="en" class="overscroll-none">
   <Head />
 
-  <body class="bg-primary">
+  <body
+    class:list={[
+      "flex min-h-dvh flex-col",
+      Astro.url.pathname === "/" ? "bg-primary" : "bg-secondary",
+    ]}
+  >
     <Nav />
 
-    <main>
+    <main class="min-h-dvh">
       <slot />
     </main>
 

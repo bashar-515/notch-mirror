@@ -8,10 +8,16 @@ const links: Link[] = [
   { href: "/stockists", label: "STOCKISTS" },
   { href: "/shop", label: "SHOP" },
 ];
+
+const isHome = Astro.url.pathname === "/";
 ---
 
 <nav
-  class="bg-secondary text-primary pointer-events-none fixed inset-x-0 top-0 flex items-center justify-between px-27 py-3 opacity-0"
+  data-home={isHome}
+  class:list={[
+    "text-primary fixed inset-x-0 top-0 flex items-center justify-between px-27 py-3",
+    isHome && "bg-secondary pointer-events-none opacity-0",
+  ]}
 >
   {
     links.map((link) => (
@@ -32,20 +38,22 @@ const links: Link[] = [
 <script>
   const nav = document.querySelector("nav");
 
-  function update() {
-    const start = (100 / 100) * window.innerHeight;
-    const end = (125 / 100) * window.innerHeight - nav!.offsetHeight;
+  if (nav?.dataset.home === "true") {
+    const update = () => {
+      const start = (100 / 100) * window.innerHeight;
+      const end = (125 / 100) * window.innerHeight - nav!.offsetHeight;
 
-    const opacity = Math.min(
-      1,
-      Math.max(0, (window.scrollY - start) / (end - start)),
-    );
+      const opacity = Math.min(
+        1,
+        Math.max(0, (window.scrollY - start) / (end - start)),
+      );
 
-    nav!.style.opacity = String(opacity);
-    nav!.style.pointerEvents = opacity < 0.05 ? "none" : "auto";
+      nav.style.opacity = String(opacity);
+      nav.style.pointerEvents = opacity < 0.05 ? "none" : "auto";
+    };
+
+    update();
+
+    window.addEventListener("scroll", update, { passive: true });
   }
-
-  update();
-
-  window.addEventListener("scroll", update, { passive: true });
 </script>
