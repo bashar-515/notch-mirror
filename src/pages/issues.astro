@@ -1,5 +1,49 @@
 ---
 import Layout from "../layouts/Layout.astro";
+
+const issues: { front: string; back: string; href?: string }[] = [
+  { front: "/001_front.webp", back: "/001_back.webp", href: "/issue001/" },
+  { front: "/002_front.webp", back: "/002_back.webp", href: "/issue002/" },
+  { front: "/003_front.jpg", back: "/003_back.jpg" },
+];
 ---
 
-<Layout />
+<Layout>
+  <div class="flex min-h-dvh items-center justify-evenly">
+    {
+      issues.map((issue) => (
+        <div class="flex flex-col gap-10">
+          <div class="group relative w-100">
+            <img src={issue.front} />
+
+            <img
+              src={issue.back}
+              class="absolute inset-0 h-full w-full opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+            />
+          </div>
+
+          <div class="flex">
+            <a
+              href="/shop/"
+              class:list={[
+                "font-times hover:bg-primary hover:border-primary mr-auto rounded-sm border border-black bg-black py-1 text-2xl tracking-widest text-white italic",
+                issue.href ? "px-4" : "px-10",
+              ]}
+            >
+              order
+            </a>
+
+            {issue.href && (
+              <a
+                href={issue.href}
+                class="hover:bg-primary hover:border-primary font-times rounded-sm border border-black px-4 py-1 text-2xl tracking-widest italic hover:text-white"
+              >
+                explore
+              </a>
+            )}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</Layout>
