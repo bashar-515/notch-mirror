@@ -55,5 +55,27 @@ const isHome = Astro.url.pathname === "/";
     update();
 
     window.addEventListener("scroll", update, { passive: true });
+  } else if (nav) {
+    const progress = (px: number) => {
+      const l = Math.min(1, Math.max(0, window.scrollY / px));
+      return l < 0.5 ? 2 * l * l : 2 * l * (2 - l) - 1;
+    };
+
+    const update = () => {
+      const fade = 1 - progress(50);
+
+      for (const link of nav.querySelectorAll("a")) {
+        if (link.getAttribute("href") === "/") {
+          link.style.transform = `scale(${1 - 0.2 * progress(300)})`;
+        } else {
+          link.style.opacity = String(fade);
+          link.style.visibility = fade ? "visible" : "hidden";
+        }
+      }
+    };
+
+    update();
+
+    window.addEventListener("scroll", update, { passive: true });
   }
 </script>
