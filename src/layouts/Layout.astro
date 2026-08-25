@@ -53,8 +53,8 @@ const footerLinksByColumn: Link[][] = [
 
   <body class="bg-primary">
     <header
-      data-home={Astro.url.pathname === "/"}
-      class="fixed inset-x-0 top-0 z-1 data-[home=true]:opacity-0"
+      data-home={Astro.url.pathname === "/" || undefined}
+      class="group fixed inset-x-0 top-0 z-1 data-[home=true]:opacity-0"
     >
       <a
         href="https://notchmagazine.substack.com/"
@@ -79,7 +79,7 @@ const footerLinksByColumn: Link[][] = [
       </a>
 
       <nav
-        class="text-primary bg-secondary flex items-center justify-between px-27 py-3"
+        class="text-primary group-data-[home=true]:bg-secondary flex items-center justify-between px-27 py-3"
       >
         {
           navLinks.map((link) => (
