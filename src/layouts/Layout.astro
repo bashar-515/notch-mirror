@@ -51,56 +51,62 @@ const footerLinksByColumn: Link[][] = [
     <title>Notch Magazine</title>
   </head>
 
-  <body class="bg-primary">
-    <header
-      data-home={Astro.url.pathname === "/" || undefined}
-      class="group fixed inset-x-0 top-0 z-1 data-[home=true]:opacity-0"
-    >
-      <a
-        href="https://notchmagazine.substack.com/"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="bg-primary text-secondary block overflow-hidden py-1 whitespace-nowrap select-none"
+  <body class={Astro.url.pathname === "/" ? "bg-primary" : "bg-secondary"}>
+    <div class="flex min-h-dvh flex-col">
+      <header
+        data-home={Astro.url.pathname === "/" || undefined}
+        class="group sticky inset-x-0 top-0 z-1 data-[home=true]:fixed data-[home=true]:opacity-0"
       >
-        <div class="marquee flex w-max">
+        <a
+          href="https://notchmagazine.substack.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bg-primary text-secondary block overflow-hidden py-1 whitespace-nowrap select-none"
+        >
+          <div class="marquee flex w-max">
+            {
+              [0, 1].map((half) => (
+                <div class="flex" aria-hidden={half === 1}>
+                  {Array.from({ length: 10 }).map(() => (
+                    <span class="flex items-center gap-1 px-12">
+                      <img
+                        src="/substack.png"
+                        alt=""
+                        class="h-[1.5em] w-auto"
+                      />
+                      NOTCH IS NOW ON SUBSTACK
+                    </span>
+                  ))}
+                </div>
+              ))
+            }
+          </div>
+        </a>
+
+        <nav
+          class="text-primary group-data-[home=true]:bg-secondary flex items-center justify-between px-27 py-3"
+        >
           {
-            [0, 1].map((half) => (
-              <div class="flex" aria-hidden={half === 1}>
-                {Array.from({ length: 10 }).map(() => (
-                  <span class="flex items-center gap-1 px-12">
-                    <img src="/substack.png" alt="" class="h-[1.5em] w-auto" />
-                    NOTCH IS NOW ON SUBSTACK
-                  </span>
-                ))}
-              </div>
+            navLinks.map((link) => (
+              <a
+                href={link.href}
+                class={
+                  link.href === "/"
+                    ? "font-sans text-6xl"
+                    : `font-sans text-3xl ${Astro.url.pathname === link.href ? "" : "decoration-1 underline-offset-4 hover:underline"}`
+                }
+              >
+                {link.label}
+              </a>
             ))
           }
-        </div>
-      </a>
+        </nav>
+      </header>
 
-      <nav
-        class="text-primary group-data-[home=true]:bg-secondary flex items-center justify-between px-27 py-3"
-      >
-        {
-          navLinks.map((link) => (
-            <a
-              href={link.href}
-              class={
-                link.href === "/"
-                  ? "font-sans text-6xl"
-                  : `font-sans text-3xl ${Astro.url.pathname === link.href ? "" : "decoration-1 underline-offset-4 hover:underline"}`
-              }
-            >
-              {link.label}
-            </a>
-          ))
-        }
-      </nav>
-    </header>
-
-    <main class="min-h-dvh">
-      <slot />
-    </main>
+      <main class="flex flex-1 flex-col">
+        <slot />
+      </main>
+    </div>
 
     <footer
       class="bg-tertiary font-times grid grid-cols-3 items-center px-24 py-6"
