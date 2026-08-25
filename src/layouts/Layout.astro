@@ -6,6 +6,10 @@ import "../styles/global.css";
 
 type Link = { href: string; label: string };
 
+type Props = { title?: string };
+
+const { title } = Astro.props;
+
 const navLinks: Link[] = [
   { href: "/issues", label: "ISSUES" },
   { href: "/events", label: "EVENTS" },
@@ -48,7 +52,7 @@ const footerLinksByColumn: Link[][] = [
       crossorigin
     />
 
-    <title>Notch Magazine</title>
+    <title>{title ? `Notch Magazine — ${title}` : "Notch Magazine"}</title>
   </head>
 
   <body class={Astro.url.pathname === "/" ? "bg-primary" : "bg-secondary"}>
