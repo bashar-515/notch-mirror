@@ -154,7 +154,7 @@ const footerLinksByColumn: Link[][] = [
 <!--       pointer-events: auto; -->
 <!--     } -->
 <!--   } -->
-<!---->
+<!-- -->
 <!--   @supports (animation-timeline: scroll()) { -->
 <!--     nav[data-home] { -->
 <!--       animation: nav-fade-in linear both; -->
@@ -173,7 +173,8 @@ const footerLinksByColumn: Link[][] = [
         1,
         Math.max(
           0,
-          (window.scrollY - 0.50 * window.innerHeight) / (0.25 * window.innerHeight),
+          (window.scrollY - 0.5 * window.innerHeight) /
+            (0.25 * window.innerHeight),
         ),
       );
 
