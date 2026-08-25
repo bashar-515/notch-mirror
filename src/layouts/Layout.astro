@@ -53,8 +53,7 @@ const footerLinksByColumn: Link[][] = [
 
   <body class="bg-primary">
     <nav
-      data-home={Astro.url.pathname === "/"}
-      class="text-primary data-[home=true]:bg-secondary fixed inset-x-0 top-0 z-1 flex items-center justify-between px-27 py-3 data-[home=true]:pointer-events-none data-[home=true]:opacity-0"
+      class="text-primary fixed inset-x-0 top-0 z-1 flex items-center justify-between px-27 py-3"
     >
       {
         navLinks.map((link) => (
@@ -142,48 +141,3 @@ const footerLinksByColumn: Link[][] = [
     </footer>
   </body>
 </html>
-
-<script>
-  const nav = document.querySelector("nav");
-
-  if (nav?.dataset.home === "true") {
-    const update = () => {
-      const start = (100 / 100) * window.innerHeight;
-      const end = (125 / 100) * window.innerHeight - nav!.offsetHeight;
-
-      const opacity = Math.min(
-        1,
-        Math.max(0, (window.scrollY - start) / (end - start)),
-      );
-
-      nav.style.opacity = String(opacity);
-      nav.style.pointerEvents = opacity < 0.05 ? "none" : "auto";
-    };
-
-    update();
-
-    window.addEventListener("scroll", update, { passive: true });
-  } else if (nav) {
-    const progress = (px: number) => {
-      const l = Math.min(1, Math.max(0, window.scrollY / px));
-      return l < 0.5 ? 2 * l * l : 2 * l * (2 - l) - 1;
-    };
-
-    const update = () => {
-      const fade = 1 - progress(50);
-
-      for (const link of nav.querySelectorAll("a")) {
-        if (link.getAttribute("href") === "/") {
-          link.style.transform = `scale(${1 - 0.2 * progress(300)})`;
-        } else {
-          link.style.opacity = String(fade);
-          link.style.visibility = fade ? "visible" : "hidden";
-        }
-      }
-    };
-
-    update();
-
-    window.addEventListener("scroll", update, { passive: true });
-  }
-</script>
