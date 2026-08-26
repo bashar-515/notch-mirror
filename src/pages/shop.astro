@@ -220,6 +220,9 @@ const products: Product[] = [
 </Layout>
 
 <script>
+  const autoplay = !window.matchMedia("(prefers-reduced-motion: reduce)")
+    .matches;
+
   for (const root of document.querySelectorAll<HTMLElement>(
     ".group\\/carousel",
   )) {
@@ -238,11 +241,11 @@ const products: Product[] = [
       });
     };
 
-    let timer = setInterval(() => go(1), 5000);
+    let timer = autoplay ? setInterval(() => go(1), 5000) : undefined;
 
     const manual = (delta: number) => {
       clearInterval(timer);
-      timer = setInterval(() => go(1), 5000);
+      if (autoplay) timer = setInterval(() => go(1), 5000);
       go(delta);
     };
 
