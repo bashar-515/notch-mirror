@@ -153,11 +153,7 @@ const products: Product[] = [
 
           <div class="flex snap-x snap-mandatory overflow-x-auto">
             {product.images.map((image) => (
-              <img
-                src={image}
-                alt={product.name}
-                class="shrink-0 snap-start object-cover"
-              />
+              <img src={image} alt={product.name} class="snap-start" />
             ))}
           </div>
         </div>
