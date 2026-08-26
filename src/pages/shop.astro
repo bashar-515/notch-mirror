@@ -159,7 +159,12 @@ const products: Product[] = [
                 : product.price}
             </p>
 
-            <a href={product.stripeUrl}>{product.buttonText ?? "buy now"}</a>
+            <a
+              href={product.stripeUrl}
+              class="font-times hover:text-primary border-primary bg-primary mt-3 mr-auto rounded-sm border px-3 py-1 text-xl text-white hover:bg-white"
+            >
+              {product.buttonText ?? "buy now"}
+            </a>
           </div>
 
           <div class="flex snap-x snap-mandatory overflow-x-auto">
