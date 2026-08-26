@@ -55,7 +55,7 @@ const footerLinksByColumn: Link[][] = [
     <title>{title ? `Notch Magazine — ${title}` : "Notch Magazine"}</title>
   </head>
 
-  <body class={Astro.url.pathname === "/" ? "bg-primary" : "bg-secondary"}>
+  <body class={Astro.url.pathname === "/" ? undefined : "bg-secondary"}>
     <div class="flex min-h-dvh flex-col">
       <header
         data-home={Astro.url.pathname === "/" || undefined}
