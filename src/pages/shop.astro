@@ -173,7 +173,7 @@ const products: Product[] = [
             </a>
           </div>
 
-          <div class="relative w-252 shrink-0">
+          <div class="group/carousel relative w-252 shrink-0">
             <div
               class:list={[
                 "bg-tertiary flex snap-x snap-mandatory overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
@@ -196,13 +196,13 @@ const products: Product[] = [
 
             <button
               type="button"
-              class="hover:text-secondary absolute top-1/2 left-5 -translate-y-1/2 cursor-pointer font-[system-ui] text-5xl text-white"
+              class="hover:text-secondary absolute top-1/2 left-5 -translate-y-1/2 cursor-pointer font-[system-ui] text-5xl text-white opacity-0 transition-opacity duration-200 group-hover/carousel:opacity-100"
             >
               ◀
             </button>
             <button
               type="button"
-              class="hover:text-secondary absolute top-1/2 right-5 -translate-y-1/2 cursor-pointer font-[system-ui] text-5xl text-white"
+              class="hover:text-secondary absolute top-1/2 right-5 -translate-y-1/2 cursor-pointer font-[system-ui] text-5xl text-white opacity-0 transition-opacity duration-200 group-hover/carousel:opacity-100"
             >
               ▶
             </button>
