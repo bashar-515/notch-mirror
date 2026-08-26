@@ -141,17 +141,19 @@ const products: Product[] = [
       products.map((product) => (
         <div class="flex gap-14 even:flex-row-reverse">
           <div class="flex flex-col">
-            <h2 class="text-3xl font-medium">{product.name}</h2>
+            <div class="flex flex-col gap-5">
+              <h2 class="text-3xl leading-none font-medium">{product.name}</h2>
 
-            <p class="font-times text-xl whitespace-pre-line">
-              {product.descriptionParagraphs.join("\n\n")}
-            </p>
-
-            {product.coverCredit && (
-              <p>Cover photo by {product.coverCredit}.</p>
-            )}
-
-            <p class="mt-auto text-3xl font-medium">
+              <p class="font-times text-xl leading-none whitespace-pre-line">
+                {product.descriptionParagraphs.join("\n\n")}
+                {product.coverCredit && (
+                  <span class="italic">
+                    {"\n\n"}Cover photo by {product.coverCredit}.
+                  </span>
+                )}
+              </p>
+            </div>
+            <p class="mt-auto text-3xl leading-none font-medium">
               {typeof product.price === "number"
                 ? `$${product.price.toLocaleString("en-US")}`
                 : product.price}
