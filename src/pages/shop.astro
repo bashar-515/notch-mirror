@@ -175,7 +175,7 @@ const products: Product[] = [
 
           <div
             class:list={[
-              "bg-tertiary flex w-252 shrink-0 snap-x snap-mandatory overflow-x-auto",
+              "bg-tertiary flex w-252 shrink-0 snap-x snap-mandatory overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
               product.isIssue ? "aspect-[5/3]" : "aspect-[15/8]",
             ]}
           >
