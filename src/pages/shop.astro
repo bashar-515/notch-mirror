@@ -1,6 +1,13 @@
 ---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
 import Layout from "../layouts/Layout.astro";
 import Logos from "../components/Logos.astro";
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "../assets/shop/**/*.{jpg,png}",
+  { eager: true },
+);
 
 type Product = {
   name: string;
@@ -181,9 +188,10 @@ const products: Product[] = [
               ]}
             >
               {product.images.map((image) => (
-                <img
-                  src={image}
+                <Image
+                  src={images[`../assets${image}`].default}
                   alt={product.name}
+                  width={1600}
                   class:list={[
                     "h-full w-full shrink-0 snap-start",
                     product.fit === "cover" || !product.isIssue
