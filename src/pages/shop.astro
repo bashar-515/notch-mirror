@@ -228,7 +228,7 @@ const products: Product[] = [
       index = (index + count + delta) % count;
       scroller.scrollTo({
         left: index * scroller.clientWidth,
-        behavior: "smooth",
+        behavior: "instant",
       });
     };
 
