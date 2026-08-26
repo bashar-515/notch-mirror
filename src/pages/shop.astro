@@ -7,7 +7,7 @@ type Product = {
   coverCredit?: string;
   price: number | string;
   buttonText?: string;
-  imageCount: number;
+  images: string[];
 };
 
 const products: Product[] = [
@@ -20,7 +20,12 @@ const products: Product[] = [
     ],
     price: "$40/year",
     buttonText: "subscribe",
-    imageCount: 4,
+    images: [
+      "/shop/subscription/1.jpg",
+      "/shop/subscription/2.jpg",
+      "/shop/subscription/3.jpg",
+      "/shop/subscription/4.jpg",
+    ],
   },
   {
     name: "ISSUE 003: CURRENTS",
@@ -29,7 +34,18 @@ const products: Product[] = [
     ],
     coverCredit: "Linda Zhengová",
     price: 22,
-    imageCount: 10,
+    images: [
+      "/shop/003/1.png",
+      "/shop/003/2.png",
+      "/shop/003/3.png",
+      "/shop/003/4.png",
+      "/shop/003/5.png",
+      "/shop/003/6.png",
+      "/shop/003/7.png",
+      "/shop/003/8.png",
+      "/shop/003/9.png",
+      "/shop/003/10.png",
+    ],
   },
   {
     name: "ISSUE 002: GRAVITY",
@@ -38,7 +54,15 @@ const products: Product[] = [
     ],
     coverCredit: "Phi Phi An",
     price: 22,
-    imageCount: 7,
+    images: [
+      "/shop/002/1.png",
+      "/shop/002/2.png",
+      "/shop/002/3.png",
+      "/shop/002/4.png",
+      "/shop/002/5.png",
+      "/shop/002/6.png",
+      "/shop/002/7.png",
+    ],
   },
   {
     name: "ISSUE 001: POTENTIAL ENERGY",
@@ -46,7 +70,14 @@ const products: Product[] = [
       "Brice Afonso, Nibha Akireddy, Oliver Beatty, Sarah Chess, Madeline Haze Curtis, Clay Davis, Claire Dauge-Roth, Lorraine de Thibault, Ugo Ferro, Viktor Fitsner, Maria Fragoso Jara, Dagoberto Gilb, Robert Pogue Harrison, Marie Hazard, Eva Hoffman, Margot Kaiser, Anna-Sofia Lesiv, Christopher Lyr, Douglas Milliken, Kaelin Palcu, Katerina Pavlidis, Molly Pepper Steemson, Matthew Schultz, Oliver Stokes-Curtis, Jonah Pruitt, Arina Zhuravleva, Clara Zimmermann.",
     ],
     price: 22,
-    imageCount: 6,
+    images: [
+      "/shop/001/1.jpg",
+      "/shop/001/2.jpg",
+      "/shop/001/3.jpg",
+      "/shop/001/4.jpg",
+      "/shop/001/5.jpg",
+      "/shop/001/6.jpg",
+    ],
   },
   {
     name: "POTENTIAL ENERGY TOTE BAG",
@@ -54,7 +85,7 @@ const products: Product[] = [
       'Screen printed by hand in New York City.\n13.75"W x 13.75"H',
     ],
     price: 20,
-    imageCount: 2,
+    images: ["/shop/bag/1.jpg", "/shop/bag/2.png"],
   },
   {
     name: "NOTCH LOGO CAP",
@@ -62,7 +93,7 @@ const products: Product[] = [
       "100% cotton embroidered baseball cap. Adjustable buckle.\nFits most sizes.",
     ],
     price: 20,
-    imageCount: 2,
+    images: ["/shop/cap/1.png", "/shop/cap/2.png"],
   },
   {
     name: "FRIEND OF NOTCH",
@@ -71,7 +102,12 @@ const products: Product[] = [
       "You'll also have first access to exclusive events in New York and Paris.",
     ],
     price: 250,
-    imageCount: 4,
+    images: [
+      "/shop/friend/1.jpg",
+      "/shop/friend/2.jpg",
+      "/shop/friend/3.jpg",
+      "/shop/friend/4.jpg",
+    ],
   },
   {
     name: "LIFETIME SUBSCRIPTION",
@@ -80,7 +116,11 @@ const products: Product[] = [
       "You'll also have first access to exclusive events in New York and Paris.",
     ],
     price: 1000,
-    imageCount: 3,
+    images: [
+      "/shop/lifetime/1.jpg",
+      "/shop/lifetime/2.jpg",
+      "/shop/lifetime/3.jpg",
+    ],
   },
 ];
 ---
