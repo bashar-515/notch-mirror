@@ -10,6 +10,8 @@ type Product = {
   buttonText?: string;
   stripeUrl: string;
   images: string[];
+  isIssue?: boolean;
+  fit?: "cover";
 };
 
 const products: Product[] = [
@@ -50,6 +52,7 @@ const products: Product[] = [
       "/shop/003/9.png",
       "/shop/003/10.png",
     ],
+    isIssue: true,
   },
   {
     name: "ISSUE 002: GRAVITY",
@@ -68,6 +71,7 @@ const products: Product[] = [
       "/shop/002/6.png",
       "/shop/002/7.png",
     ],
+    isIssue: true,
   },
   {
     name: "ISSUE 001: POTENTIAL ENERGY",
@@ -84,6 +88,8 @@ const products: Product[] = [
       "/shop/001/5.jpg",
       "/shop/001/6.jpg",
     ],
+    isIssue: true,
+    fit: "cover",
   },
   {
     name: "POTENTIAL ENERGY TOTE BAG",
@@ -167,9 +173,23 @@ const products: Product[] = [
             </a>
           </div>
 
-          <div class="flex snap-x snap-mandatory overflow-x-auto">
+          <div
+            class:list={[
+              "bg-tertiary flex w-252 shrink-0 snap-x snap-mandatory overflow-x-auto",
+              product.isIssue ? "aspect-[5/3]" : "aspect-[15/8]",
+            ]}
+          >
             {product.images.map((image) => (
-              <img src={image} alt={product.name} class="snap-start" />
+              <img
+                src={image}
+                alt={product.name}
+                class:list={[
+                  "h-full w-full shrink-0 snap-start",
+                  product.fit === "cover" || !product.isIssue
+                    ? "object-cover"
+                    : "object-contain",
+                ]}
+              />
             ))}
           </div>
         </div>
