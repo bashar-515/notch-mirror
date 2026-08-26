@@ -173,24 +173,39 @@ const products: Product[] = [
             </a>
           </div>
 
-          <div
-            class:list={[
-              "bg-tertiary flex w-252 shrink-0 snap-x snap-mandatory overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
-              product.isIssue ? "aspect-[5/3]" : "aspect-[15/8]",
-            ]}
-          >
-            {product.images.map((image) => (
-              <img
-                src={image}
-                alt={product.name}
-                class:list={[
-                  "h-full w-full shrink-0 snap-start",
-                  product.fit === "cover" || !product.isIssue
-                    ? "object-cover"
-                    : "object-contain",
-                ]}
-              />
-            ))}
+          <div class="relative w-252 shrink-0">
+            <div
+              class:list={[
+                "bg-tertiary flex snap-x snap-mandatory overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
+                product.isIssue ? "aspect-[5/3]" : "aspect-[15/8]",
+              ]}
+            >
+              {product.images.map((image) => (
+                <img
+                  src={image}
+                  alt={product.name}
+                  class:list={[
+                    "h-full w-full shrink-0 snap-start",
+                    product.fit === "cover" || !product.isIssue
+                      ? "object-cover"
+                      : "object-contain",
+                  ]}
+                />
+              ))}
+            </div>
+
+            <button
+              type="button"
+              class="hover:text-secondary absolute top-1/2 left-5 -translate-y-1/2 cursor-pointer font-[system-ui] text-5xl text-white"
+            >
+              ◀
+            </button>
+            <button
+              type="button"
+              class="hover:text-secondary absolute top-1/2 right-5 -translate-y-1/2 cursor-pointer font-[system-ui] text-5xl text-white"
+            >
+              ▶
+            </button>
           </div>
         </div>
       ))
