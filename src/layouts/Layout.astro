@@ -38,7 +38,7 @@ const footerLinksByColumn: Link[][] = [
 ];
 ---
 
-<html lang="en">
+<html lang="en" class="bg-primary">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -55,19 +55,8 @@ const footerLinksByColumn: Link[][] = [
     <title>{title ? `Notch Magazine — ${title}` : "Notch Magazine"}</title>
   </head>
 
-  <body class="bg-primary">
-    <div
-      class="fixed top-1/2 left-1/2 -z-1 flex -translate-x-1/2 -translate-y-1/2 gap-62 text-white"
-    >
-      {Array.from({ length: 3 }).map(() => <Logo class="h-78" />)}
-    </div>
-
-    <div
-      class:list={[
-        "flex min-h-dvh flex-col",
-        Astro.url.pathname !== "/" && "bg-secondary",
-      ]}
-    >
+  <body class={Astro.url.pathname === "/" ? "bg-primary" : "bg-secondary"}>
+    <div class="flex min-h-dvh flex-col">
       <header
         data-home={Astro.url.pathname === "/" || undefined}
         class="group sticky inset-x-0 top-0 z-1 data-[home=true]:fixed data-[home=true]:opacity-0"

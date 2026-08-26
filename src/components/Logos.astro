@@ -1,0 +1,9 @@
+---
+import Logo from "./icons/Logo.astro";
+---
+
+<div
+  class="fixed top-1/2 left-1/2 -z-1 flex -translate-x-1/2 -translate-y-1/2 gap-62 text-white"
+>
+  {Array.from({ length: 3 }).map(() => <Logo class="h-78" />)}
+</div>
