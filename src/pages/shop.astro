@@ -144,7 +144,7 @@ const products: Product[] = [
 <Layout title="shop">
   <div class="flex flex-col gap-26 px-26 pt-14 pb-28">
     {
-      products.map((product) => (
+      products.map((product, productIndex) => (
         <div class="flex gap-14 even:flex-row-reverse">
           <div class="flex flex-col">
             <div class="flex flex-col gap-5">
@@ -196,20 +196,25 @@ const products: Product[] = [
 
             <button
               type="button"
-              class="hover:text-secondary absolute top-1/2 left-5 -translate-y-1/2 cursor-pointer font-[system-ui] text-5xl text-white opacity-0 transition-opacity duration-200 pointer-events-none group-hover/carousel:pointer-events-auto group-hover/carousel:opacity-100 group-focus-within/carousel:opacity-100"
+              id={`prev-${productIndex}`}
+              class="hover:text-secondary pointer-events-none absolute top-1/2 left-5 -translate-y-1/2 cursor-pointer font-[system-ui] text-5xl text-white opacity-0 transition-opacity duration-200 group-focus-within/carousel:opacity-100 group-hover/carousel:pointer-events-auto group-hover/carousel:opacity-100"
             >
               ◀
             </button>
             <button
               type="button"
-              class="hover:text-secondary absolute top-1/2 right-5 -translate-y-1/2 cursor-pointer font-[system-ui] text-5xl text-white opacity-0 transition-opacity duration-200 pointer-events-none group-hover/carousel:pointer-events-auto group-hover/carousel:opacity-100 group-focus-within/carousel:opacity-100"
+              id={`next-${productIndex}`}
+              class="hover:text-secondary pointer-events-none absolute top-1/2 right-5 -translate-y-1/2 cursor-pointer font-[system-ui] text-5xl text-white opacity-0 transition-opacity duration-200 group-focus-within/carousel:opacity-100 group-hover/carousel:pointer-events-auto group-hover/carousel:opacity-100"
             >
               ▶
             </button>
 
-            <div class="absolute bottom-10 left-1/2 flex -translate-x-1/2 gap-2 opacity-0 transition-opacity duration-200 pointer-events-none group-hover/carousel:pointer-events-auto group-hover/carousel:opacity-100 group-focus-within/carousel:opacity-100">
-              {product.images.map(() => (
-                <div class="dot h-3 w-3 rounded-full border-2 border-white" />
+            <div class="pointer-events-none absolute bottom-10 left-1/2 flex -translate-x-1/2 gap-2 opacity-0 transition-opacity duration-200 group-focus-within/carousel:opacity-100 group-hover/carousel:pointer-events-auto group-hover/carousel:opacity-100">
+              {product.images.map((_, i) => (
+                <button
+                  type="button"
+                  class="dot h-3 w-3 rounded-full border border-white [&:not(.bg-white)]:cursor-pointer"
+                />
               ))}
             </div>
           </div>
@@ -223,37 +228,44 @@ const products: Product[] = [
   const autoplay = !window.matchMedia("(prefers-reduced-motion: reduce)")
     .matches;
 
-  for (const root of document.querySelectorAll<HTMLElement>(
-    ".group\\/carousel",
-  )) {
-    const scroller = root.querySelector<HTMLElement>("div");
-    const [prev, next] = root.querySelectorAll("button");
-    if (!scroller || !next) continue;
+  document
+    .querySelectorAll<HTMLElement>(".group\\/carousel")
+    .forEach((root, productIndex) => {
+      const scroller = root.querySelector<HTMLElement>("div");
+      const prev = document.getElementById(`prev-${productIndex}`);
+      const next = document.getElementById(`next-${productIndex}`);
+      if (!scroller || !prev || !next) return;
 
-    const count = scroller.children.length;
-    const dots = [...root.querySelectorAll<HTMLElement>(".dot")];
-    let index = 0;
+      const count = scroller.children.length;
+      const dots = [...root.querySelectorAll<HTMLElement>(".dot")];
+      let index = 0;
 
-    const go = (delta: number) => {
-      index = (index + count + delta) % count;
-      scroller.scrollTo({
-        left: index * scroller.clientWidth,
-        behavior: "instant",
-      });
-      dots.forEach((dot, i) => dot.classList.toggle("bg-white", i === index));
-    };
+      const go = (delta: number) => {
+        index = (index + count + delta) % count;
+        scroller.scrollTo({
+          left: index * scroller.clientWidth,
+          behavior: "instant",
+        });
+        dots.forEach((dot, i) => dot.classList.toggle("bg-white", i === index));
+      };
 
-    dots[0]?.classList.add("bg-white");
+      dots[0]?.classList.add("bg-white");
 
-    let timer = autoplay ? setInterval(() => go(1), 5000) : undefined;
+      let timer = autoplay ? setInterval(() => go(1), 5000) : undefined;
 
-    const manual = (delta: number) => {
-      clearInterval(timer);
-      if (autoplay) timer = setInterval(() => go(1), 5000);
-      go(delta);
-    };
+      const manual = (delta: number) => {
+        clearInterval(timer);
+        if (autoplay) timer = setInterval(() => go(1), 5000);
+        go(delta);
+      };
 
-    prev.addEventListener("click", () => manual(-1));
-    next.addEventListener("click", () => manual(1));
-  }
+      prev.addEventListener("click", () => manual(-1));
+      next.addEventListener("click", () => manual(1));
+
+      dots.forEach((dot, i) =>
+        dot.addEventListener("click", () => {
+          if (i !== index) manual(i - index);
+        }),
+      );
+    });
 </script>
