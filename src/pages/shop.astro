@@ -212,3 +212,27 @@ const products: Product[] = [
     }
   </div>
 </Layout>
+
+<script>
+  for (const root of document.querySelectorAll<HTMLElement>(
+    ".group\\/carousel",
+  )) {
+    const scroller = root.querySelector<HTMLElement>("div");
+    const [prev, next] = root.querySelectorAll("button");
+    if (!scroller || !next) continue;
+
+    const count = scroller.children.length;
+    let index = 0;
+
+    const go = (delta: number) => {
+      index = (index + count + delta) % count;
+      scroller.scrollTo({
+        left: index * scroller.clientWidth,
+        behavior: "smooth",
+      });
+    };
+
+    prev.addEventListener("click", () => go(-1));
+    next.addEventListener("click", () => go(1));
+  }
+</script>
