@@ -126,4 +126,38 @@ const products: Product[] = [
 ];
 ---
 
-<Layout title="shop" />
+<Layout title="shop">
+  {
+    products.map((product) => (
+      <div class="flex even:flex-row-reverse">
+        <div>
+          <p>{product.name}</p>
+
+          {product.descriptionParagraphs.map((descriptionParagraph) => (
+            <p>{descriptionParagraph}</p>
+          ))}
+
+          {product.coverCredit && <p>Cover photo by {product.coverCredit}.</p>}
+
+          <p>
+            {typeof product.price === "number"
+              ? `$${product.price.toLocaleString("en-US")}`
+              : product.price}
+          </p>
+
+          <button type="button">{product.buttonText ?? "buy now"}</button>
+        </div>
+
+        <div class="flex snap-x snap-mandatory overflow-x-auto">
+          {product.images.map((image) => (
+            <img
+              src={image}
+              alt={product.name}
+              class="shrink-0 snap-start object-cover"
+            />
+          ))}
+        </div>
+      </div>
+    ))
+  }
+</Layout>
