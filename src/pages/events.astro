@@ -1,6 +1,13 @@
 ---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
 import Layout from "../layouts/Layout.astro";
 import Logos from "../components/Logos.astro";
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "../assets/events/**/*.{jpg,png}",
+  { eager: true },
+);
 
 type Event = {
   name: string;
@@ -89,7 +96,25 @@ const events: Event[] = [
   <div class="bg-primary isolate flex flex-col gap-28">
     <Logos />
 
-    <div class="bg-secondary min-h-dvh"></div>
+    <div class="bg-secondary min-h-dvh">
+      {
+        events.map((event) => (
+          <div class="group/event flex even:flex-row-reverse">
+            <Image
+              src={images[`../assets${event.coverImage}`].default}
+              alt={event.name}
+              width={800}
+              class="aspect-[7/10] w-96 object-cover"
+            />
+
+            <div class="rotate-180 [writing-mode:vertical-rl] group-even/event:rotate-0">
+              {event.name}
+            </div>
+            <div>collage</div>
+          </div>
+        ))
+      }
+    </div>
     <div class="bg-secondary min-h-dvh"></div>
   </div>
 </Layout>
