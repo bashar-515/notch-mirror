@@ -31,6 +31,26 @@ body {
   --international-klein-blue: oklch(0.2878 0.1994 264.05);
 }
 
+@utility px-frame {
+  @apply px-26;
+}
+
+@utility pt-frame {
+  @apply pt-14;
+}
+
+@utility pb-frame {
+  @apply pt-28;
+}
+
+@utility py-frame {
+  @apply pt-frame pb-frame;
+}
+
+@utility p-frame {
+  @apply px-frame py-frame;
+}
+
 @font-face {
   font-family: "ABC Arizona Serif";
   src: url("/fonts/Arizona Regular/ABCArizonaSerif-Regular.otf")
