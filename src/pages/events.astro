@@ -108,13 +108,13 @@ const events: Event[] = [
             {event.href ? (
               <a
                 href={event.href}
-                class="transition-opacity duration-200 hover:opacity-75"
+                class="w-96 shrink-0 transition-opacity duration-200 hover:opacity-75"
               >
                 <Image
                   src={images[`../assets${event.coverImage}`].default}
                   alt={event.name}
                   width={800}
-                  class="aspect-[7/10] w-96 object-cover"
+                  class="aspect-[7/10] w-full object-cover"
                 />
               </a>
             ) : (
@@ -145,13 +145,13 @@ const events: Event[] = [
                     event.href ? (
                       <a
                         href={event.href}
-                        class="transition-opacity duration-200 hover:opacity-75"
+                        class="min-h-0 w-full flex-1 transition-opacity duration-200 hover:opacity-75"
                       >
                         <Image
                           src={images[`../assets${image}`].default}
                           alt={event.name}
                           width={500}
-                          class="min-h-0 w-full flex-1 object-cover"
+                          class="h-full w-full object-cover"
                         />
                       </a>
                     ) : (
