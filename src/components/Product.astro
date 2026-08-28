@@ -19,7 +19,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
       <h2 class="text-3xl leading-none font-medium">{product.name}</h2>
 
       <p class="font-times text-xl leading-none whitespace-pre-line">
-        {product.descriptionParagraphs.join("\n\n")}
+        <Fragment set:html={product.descriptionParagraphs.join("\n\n")} />
         {
           product.coverCredit && (
             <span class="italic">

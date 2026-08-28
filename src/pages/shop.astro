@@ -6,11 +6,6 @@ import Product from "../components/Product.astro";
 import Layout from "../layouts/Layout.astro";
 import Logos from "../components/Logos.astro";
 
-const images = import.meta.glob<{ default: ImageMetadata }>(
-  "../assets/shop/**/*.{jpg,png}",
-  { eager: true },
-);
-
 const products: ProductType[] = [
   {
     name: "SUBSCRIPTION",
