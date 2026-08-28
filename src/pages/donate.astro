@@ -46,7 +46,9 @@ const products: ProductType[] = [
       becoming a Friend of Notch or a Lifetime Subscriber.
     </p>
 
-    <div>products</div>
+    <div>
+      {products.map((product, idx) => <Product product={product} idx={idx} />)}
+    </div>
 
     <hr class="border-primary mx-auto w-3/4 border-t" />
 
