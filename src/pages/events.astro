@@ -36,6 +36,7 @@ const events: Event[] = [
       ["/events/002/col-4/1.jpg", "/events/002/col-4/2.jpg"],
       ["/events/002/col-5/1.jpg", "/events/002/col-5/2.jpg"],
     ],
+    href: "/issue002release/",
   },
   {
     name: "notch x color of sound, atelier, paris",
@@ -62,6 +63,7 @@ const events: Event[] = [
         "/events/atelier/col-4/3.jpg",
       ],
     ],
+    href: "/gravityatelier",
   },
   {
     name: "notch magazine launch, nyc",
@@ -88,6 +90,7 @@ const events: Event[] = [
         "/events/launch/col-4/3.jpg",
       ],
     ],
+    href: "/issue001launch",
   },
 ];
 ---
@@ -102,28 +105,58 @@ const events: Event[] = [
       {
         events.map((event) => (
           <div class="group/event flex py-18 even:flex-row-reverse">
-            <Image
-              src={images[`../assets${event.coverImage}`].default}
-              alt={event.name}
-              width={800}
-              class="aspect-[7/10] w-96 object-cover"
-            />
+            {event.href ? (
+              <a href={event.href}>
+                <Image
+                  src={images[`../assets${event.coverImage}`].default}
+                  alt={event.name}
+                  width={800}
+                  class="aspect-[7/10] w-96 object-cover"
+                />
+              </a>
+            ) : (
+              <Image
+                src={images[`../assets${event.coverImage}`].default}
+                alt={event.name}
+                width={800}
+                class="aspect-[7/10] w-96 object-cover"
+              />
+            )}
 
-            <div class="rotate-180 py-7 text-center text-4xl leading-none italic [writing-mode:vertical-rl] group-even/event:rotate-0">
-              {event.name}
-            </div>
+            {event.href ? (
+              <div class="rotate-180 py-7 text-center text-4xl leading-none italic [writing-mode:vertical-rl] group-even/event:rotate-0">
+                <a href={event.href} class="hover:text-primary">
+                  {event.name}
+                </a>
+              </div>
+            ) : (
+              <div class="rotate-180 py-7 text-center text-4xl leading-none italic [writing-mode:vertical-rl] group-even/event:rotate-0">
+                {event.name}
+              </div>
+            )}
 
             <div class="flex flex-1">
               {event.collageImagesByColumn.map((column) => (
                 <div class="flex min-w-0 flex-1 flex-col">
-                  {column.map((image) => (
-                    <Image
-                      src={images[`../assets${image}`].default}
-                      alt={event.name}
-                      width={500}
-                      class="min-h-0 w-full flex-1 object-cover"
-                    />
-                  ))}
+                  {column.map((image) =>
+                    event.href ? (
+                      <a href={event.href}>
+                        <Image
+                          src={images[`../assets${image}`].default}
+                          alt={event.name}
+                          width={500}
+                          class="min-h-0 w-full flex-1 object-cover"
+                        />
+                      </a>
+                    ) : (
+                      <Image
+                        src={images[`../assets${image}`].default}
+                        alt={event.name}
+                        width={500}
+                        class="min-h-0 w-full flex-1 object-cover"
+                      />
+                    ),
+                  )}
                 </div>
               ))}
             </div>
