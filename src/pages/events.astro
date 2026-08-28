@@ -99,12 +99,10 @@ const events: Event[] = [
   <div class="bg-primary isolate flex flex-col gap-28">
     <Logos />
 
-    <div
-      class="bg-secondary pt-frame px-frame divide-primary min-h-dvh divide-y pb-10"
-    >
+    <div class="bg-secondary px-frame divide-primary min-h-dvh divide-y pb-10">
       {
         events.map((event) => (
-          <div class="group/event flex py-18 even:flex-row-reverse">
+          <div class="group/event flex py-18 first:-mt-4 even:flex-row-reverse">
             {event.href ? (
               <a
                 href={event.href}
