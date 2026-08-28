@@ -6,9 +6,9 @@ import "../styles/global.css";
 
 type Link = { href: string; label: string };
 
-type Props = { title?: string };
+type Props = { title?: string; overlayHeader?: boolean };
 
-const { title } = Astro.props;
+const { title, overlayHeader = Astro.url.pathname === "/" } = Astro.props;
 
 const navLinks: Link[] = [
   { href: "/issues", label: "ISSUES" },
@@ -59,7 +59,10 @@ const footerLinksByColumn: Link[][] = [
     <div class="flex min-h-dvh flex-col">
       <header
         data-home={Astro.url.pathname === "/" || undefined}
-        class="group sticky inset-x-0 top-0 z-1 data-[home=true]:fixed data-[home=true]:opacity-0"
+        class:list={[
+          "group inset-x-0 top-0 z-1 data-[home=true]:opacity-0",
+          overlayHeader ? "fixed" : "sticky",
+        ]}
       >
         <a
           href="https://notchmagazine.substack.com/"
