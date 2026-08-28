@@ -110,7 +110,21 @@ const events: Event[] = [
             <div class="rotate-180 [writing-mode:vertical-rl] group-even/event:rotate-0">
               {event.name}
             </div>
-            <div>collage</div>
+
+            <div class="flex flex-1">
+              {event.collageImagesByColumn.map((column) => (
+                <div class="flex min-w-0 flex-1 flex-col">
+                  {column.map((image) => (
+                    <Image
+                      src={images[`../assets${image}`].default}
+                      alt={event.name}
+                      width={500}
+                      class="min-h-0 w-full flex-1 object-cover"
+                    />
+                  ))}
+                </div>
+              ))}
+            </div>
           </div>
         ))
       }
