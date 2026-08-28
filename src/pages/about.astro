@@ -1,0 +1,72 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+type Person = {
+  name: string;
+  role: string;
+};
+
+const peopleByColumn: Person[][] = [
+  [
+    { name: "SASHA LANDAUER", role: "Editor, Writing" },
+    { name: "MADELINE HAZE CURTIS", role: "Copyeditor" },
+    { name: "ANDI GRENE", role: "Editorial Assistant, Writing" },
+    { name: "TAMSYN CHANDLER", role: "Stockists Manager & Events" },
+  ],
+  [
+    { name: "ANGELA BLACK", role: "Editor, Art & Essays, Art Director" },
+    { name: "KATERINA PAVLIDIS", role: "Reader, Poetry" },
+    { name: "NEDA RAD", role: "Creative Strategist & Marketing" },
+    { name: "CROFT & JOHNSON LLP", role: "Legal Counsel" },
+  ],
+  [
+    { name: "ARINA ZHURAVLEVA", role: "Designer" },
+    { name: "MARY BERG", role: "Curatorial Consultant" },
+    { name: "ROISIN TEELING", role: "Social Media Lead" },
+    { name: "BASHAR EID", role: "Web Developer" },
+  ],
+];
+---
+
+<Layout title="about">
+  <div
+    class="flex flex-col items-center justify-center gap-14 px-85 py-24 text-center text-4xl"
+  >
+    <p>
+      Notch is a literary and arts magazine based in New York and Paris,
+      published biannually in print and online.
+    </p>
+
+    <p>
+      Notch was founded with the goal of de-siloing the creative arts and
+      underscoring their shared root system. We consider all genres with an
+      equal level of seriousness—publishing nail art alongside 18th century
+      philosophy; scientific essays with video sculpture. Each issue has a
+      unique theme which forms a critical connective tissue between selected
+      works. By presenting these strange combinations, we honor otherness.
+    </p>
+
+    <p>Submissions are currently closed.</p>
+  </div>
+
+  <div class="bg-primary flex flex-col gap-14 p-28 text-white">
+    <h2>MASTHEAD</h2>
+
+    <div class="flex justify-between">
+      {
+        peopleByColumn.map((people) => (
+          <div class="flex flex-col gap-14">
+            {people.map((person) => (
+              <div>
+                <p>{person.name}</p>
+                <p>{person.role}</p>
+              </div>
+            ))}
+          </div>
+        ))
+      }
+    </div>
+
+    <p class="italic">For inquiries: editors@notch.ink.</p>
+  </div>
+</Layout>
