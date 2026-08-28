@@ -40,7 +40,7 @@ body {
 }
 
 @utility pb-frame {
-  @apply pt-28;
+  @apply pb-28;
 }
 
 @utility py-frame {
