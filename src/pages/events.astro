@@ -96,10 +96,12 @@ const events: Event[] = [
   <div class="bg-primary isolate flex flex-col gap-28">
     <Logos />
 
-    <div class="bg-secondary pt-frame px-frame min-h-dvh">
+    <div
+      class="bg-secondary pt-frame px-frame divide-primary min-h-dvh divide-y pb-10"
+    >
       {
         events.map((event) => (
-          <div class="group/event flex even:flex-row-reverse">
+          <div class="group/event flex py-18 even:flex-row-reverse">
             <Image
               src={images[`../assets${event.coverImage}`].default}
               alt={event.name}
@@ -107,7 +109,7 @@ const events: Event[] = [
               class="aspect-[7/10] w-96 object-cover"
             />
 
-            <div class="rotate-180 [writing-mode:vertical-rl] group-even/event:rotate-0">
+            <div class="rotate-180 py-7 text-center text-4xl leading-none italic [writing-mode:vertical-rl] group-even/event:rotate-0">
               {event.name}
             </div>
 
