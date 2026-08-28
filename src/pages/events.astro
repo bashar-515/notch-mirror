@@ -106,7 +106,10 @@ const events: Event[] = [
         events.map((event) => (
           <div class="group/event flex py-18 even:flex-row-reverse">
             {event.href ? (
-              <a href={event.href}>
+              <a
+                href={event.href}
+                class="transition-opacity duration-200 hover:opacity-75"
+              >
                 <Image
                   src={images[`../assets${event.coverImage}`].default}
                   alt={event.name}
@@ -140,7 +143,10 @@ const events: Event[] = [
                 <div class="flex min-w-0 flex-1 flex-col">
                   {column.map((image) =>
                     event.href ? (
-                      <a href={event.href}>
+                      <a
+                        href={event.href}
+                        class="transition-opacity duration-200 hover:opacity-75"
+                      >
                         <Image
                           src={images[`../assets${image}`].default}
                           alt={event.name}
