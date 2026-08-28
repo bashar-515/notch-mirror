@@ -93,6 +93,17 @@ const events: Event[] = [
     href: "/issue001launch",
   },
 ];
+
+const posters = [
+  { image: "/events/1.png", width: 512, height: 689 },
+  { image: "/events/2.jpg", width: 533, height: 689 },
+  { image: "/events/3.png", width: 528, height: 695 },
+  { image: "/events/4.jpg", width: 561, height: 702 },
+  { image: "/events/5.jpg", width: 507, height: 720 },
+  { image: "/events/6.png", width: 510, height: 717 },
+  { image: "/events/7.jpg", width: 705, height: 720 },
+  { image: "/events/8.jpg", width: 510, height: 717 },
+];
 ---
 
 <Layout title="events">
@@ -168,6 +179,20 @@ const events: Event[] = [
         ))
       }
     </div>
-    <div class="bg-secondary pb-frame px-frame min-h-dvh"></div>
+    <div class="bg-secondary pb-frame px-frame min-h-dvh">
+      <div class="grid grid-cols-4 justify-items-center gap-y-24">
+        {
+          posters.map((poster) => (
+            <Image
+              src={images[`../assets${poster.image}`].default}
+              alt="Notch event poster"
+              width={poster.width}
+              height={poster.height}
+              class="h-88 w-auto"
+            />
+          ))
+        }
+      </div>
+    </div>
   </div>
 </Layout>
