@@ -94,11 +94,16 @@ const events: Event[] = [
   },
 ];
 
-const posters = [
+const posters: {
+  image: string;
+  width: number;
+  height: number;
+  zoom?: boolean;
+}[] = [
   { image: "/events/1.png", width: 512, height: 689 },
   { image: "/events/2.jpg", width: 533, height: 689 },
   { image: "/events/3.png", width: 528, height: 695 },
-  { image: "/events/4.jpg", width: 561, height: 702 },
+  { image: "/events/4.jpg", width: 561, height: 702, zoom: true },
   { image: "/events/5.jpg", width: 507, height: 720 },
   { image: "/events/6.png", width: 510, height: 717 },
   { image: "/events/7.jpg", width: 705, height: 720 },
@@ -180,16 +185,22 @@ const posters = [
       }
     </div>
     <div class="bg-secondary pb-frame px-frame min-h-dvh">
-      <div class="grid grid-cols-4 justify-items-center gap-y-24">
+      <div class="flex flex-wrap justify-center gap-x-11 gap-y-7 pt-24">
         {
-          posters.map((poster) => (
-            <Image
-              src={images[`../assets${poster.image}`].default}
-              alt="Notch event poster"
-              width={poster.width}
-              height={poster.height}
-              class="h-88 w-auto"
-            />
+          posters.map((poster, i) => (
+            <div class="overflow-hidden shadow-xl">
+              <Image
+                src={images[`../assets${poster.image}`].default}
+                alt="Notch event poster"
+                width={poster.width}
+                height={poster.height}
+                class:list={[
+                  "w-auto",
+                  i < 4 ? "h-88" : "h-92",
+                  poster.zoom && "scale-150",
+                ]}
+              />
+            </div>
           ))
         }
       </div>
