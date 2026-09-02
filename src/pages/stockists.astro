@@ -3,15 +3,28 @@ import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 import map from "../assets/stockists/map.png";
 
+type DotLabel =
+  | "SAN FRANCISCO"
+  | "SAN DIEGO"
+  | "MEXICO CITY"
+  | "NEW YORK"
+  | "GLASGOW"
+  | "LONDON"
+  | "PARIS"
+  | "BERLIN"
+  | "STOCKHOLM"
+  | "ATHENS";
+
 type Stockist = {
   name: string;
   address: string;
   place: string;
+  dotLabel: DotLabel;
+  heading?: string;
 };
 
 type Dot = {
-  label: string;
-  location: keyof typeof stockistsByLocation;
+  label: DotLabel;
   x: number;
   y: number;
 };
@@ -23,16 +36,19 @@ const stockistsByLocation: Record<string, [Stockist[], Stockist[]]> = {
         name: "Soho News International",
         address: "186 Prince St",
         place: "New York, NY 10012",
+        dotLabel: "NEW YORK",
       },
       {
         name: "McNally Jackson",
         address: "134 Prince St",
         place: "New York, NY 10012",
+        dotLabel: "NEW YORK",
       },
       {
         name: "Iconic Magazines",
         address: "188 Mulberry St",
         place: "New York, NY 10012",
+        dotLabel: "NEW YORK",
       },
     ],
     [
@@ -40,16 +56,19 @@ const stockistsByLocation: Record<string, [Stockist[], Stockist[]]> = {
         name: "Casa Magazines",
         address: "22 8th Ave",
         place: "New York, NY 10014",
+        dotLabel: "NEW YORK",
       },
       {
         name: "The Word is Change",
         address: "368 Tompkins Ave",
         place: "Brooklyn, NY 11216",
+        dotLabel: "NEW YORK",
       },
       {
         name: "McNally Jackson",
         address: "76 N. 4th St",
         place: "Brooklyn, NY 11249",
+        dotLabel: "NEW YORK",
       },
     ],
   ],
@@ -59,16 +78,19 @@ const stockistsByLocation: Record<string, [Stockist[], Stockist[]]> = {
         name: "Smoke Signals Newsstand",
         address: "2223 Polk St",
         place: "San Francisco, CA 94109",
+        dotLabel: "SAN FRANCISCO",
       },
       {
         name: "Green Apple Books",
         address: "506 Clement St",
         place: "San Francisco, CA 94118",
+        dotLabel: "SAN FRANCISCO",
       },
       {
         name: "34 Trinity Arts & News",
         address: "34 Trinity Pl",
         place: "San Francisco, CA 94104",
+        dotLabel: "SAN FRANCISCO",
       },
     ],
     [
@@ -76,11 +98,13 @@ const stockistsByLocation: Record<string, [Stockist[], Stockist[]]> = {
         name: "Beeks Books",
         address: "2500 Telegraph Ave",
         place: "Berkeley, CA 94704",
+        dotLabel: "SAN FRANCISCO",
       },
       {
         name: "Verbatim Books",
         address: "3793 30th St",
         place: "San Diego, CA 92104",
+        dotLabel: "SAN DIEGO",
       },
     ],
   ],
@@ -90,6 +114,7 @@ const stockistsByLocation: Record<string, [Stockist[], Stockist[]]> = {
         name: "Casa Bosques",
         address: "Córdoba 25, Roma Nte., Cuauhtémoc, 06700",
         place: "Mexico City, CDMX",
+        dotLabel: "MEXICO CITY",
       },
     ],
     [],
@@ -100,6 +125,7 @@ const stockistsByLocation: Record<string, [Stockist[], Stockist[]]> = {
         name: "Mount Florida Books",
         address: "1069 Cathcart Rd",
         place: "Glasgow G42 9AF",
+        dotLabel: "GLASGOW",
       },
     ],
     [],
@@ -110,11 +136,13 @@ const stockistsByLocation: Record<string, [Stockist[], Stockist[]]> = {
         name: "Burley Fisher Books",
         address: "400 Kingsland Rd",
         place: "London, E8 4AA",
+        dotLabel: "LONDON",
       },
       {
         name: "Peckham Books",
         address: "20 Maxted Rd",
         place: "London, SE15 4LF",
+        dotLabel: "LONDON",
       },
     ],
     [
@@ -122,6 +150,8 @@ const stockistsByLocation: Record<string, [Stockist[], Stockist[]]> = {
         name: "UNITOM Books",
         address: "1a Stevenson Square",
         place: "Manchester, M1 1DN",
+        dotLabel: "LONDON",
+        heading: "MANCHESTER",
       },
     ],
   ],
@@ -131,11 +161,13 @@ const stockistsByLocation: Record<string, [Stockist[], Stockist[]]> = {
         name: "Cahier Central",
         address: "26 Rue du Château d'Eau",
         place: "75010 Paris",
+        dotLabel: "PARIS",
       },
       {
         name: "The Red Wheelbarrow",
         address: "11 Rue de Médicis",
         place: "75006 Paris",
+        dotLabel: "PARIS",
       },
     ],
     [
@@ -143,6 +175,7 @@ const stockistsByLocation: Record<string, [Stockist[], Stockist[]]> = {
         name: "Bouquiniste",
         address: "18 Quai de Conti",
         place: "75006 Paris",
+        dotLabel: "PARIS",
       },
     ],
   ],
@@ -152,6 +185,7 @@ const stockistsByLocation: Record<string, [Stockist[], Stockist[]]> = {
         name: "Zur schwankenden Weltkugel",
         address: "Kastanienallee 85",
         place: "10435 Berlin",
+        dotLabel: "BERLIN",
       },
     ],
     [],
@@ -162,6 +196,7 @@ const stockistsByLocation: Record<string, [Stockist[], Stockist[]]> = {
         name: "Papercut",
         address: "Krukmakargatan 24",
         place: "118 51 Stockholm",
+        dotLabel: "STOCKHOLM",
       },
     ],
     [],
@@ -172,6 +207,7 @@ const stockistsByLocation: Record<string, [Stockist[], Stockist[]]> = {
         name: "Bookbar by Kaktos",
         address: "Aiolou 39",
         place: "Athens 105 51",
+        dotLabel: "ATHENS",
       },
     ],
     [],
@@ -179,17 +215,19 @@ const stockistsByLocation: Record<string, [Stockist[], Stockist[]]> = {
 };
 
 const dots: Dot[] = [
-  { label: "SAN FRANCISCO", location: "CALIFORNIA", x: 14.58, y: 41.55 },
-  { label: "SAN DIEGO", location: "CALIFORNIA", x: 15.53, y: 44.08 },
-  { label: "MEXICO CITY", location: "MEXICO", x: 19.55, y: 52.23 },
-  { label: "NEW YORK", location: "NEW YORK", x: 27.17, y: 41.55 },
-  { label: "GLASGOW", location: "SCOTLAND", x: 45.17, y: 32.62 },
-  { label: "LONDON", location: "ENGLAND", x: 46.44, y: 35.73 },
-  { label: "PARIS", location: "FRANCE", x: 46.86, y: 38.06 },
-  { label: "BERLIN", location: "GERMANY", x: 50.04, y: 35.34 },
-  { label: "STOCKHOLM", location: "SWEDEN", x: 50.04, y: 29.9 },
-  { label: "ATHENS", location: "GREECE", x: 52.05, y: 43.3 },
+  { label: "SAN FRANCISCO", x: 14.58, y: 41.55 },
+  { label: "SAN DIEGO", x: 15.53, y: 44.08 },
+  { label: "MEXICO CITY", x: 19.55, y: 52.23 },
+  { label: "NEW YORK", x: 27.17, y: 41.55 },
+  { label: "GLASGOW", x: 45.17, y: 32.62 },
+  { label: "LONDON", x: 46.44, y: 35.73 },
+  { label: "PARIS", x: 46.86, y: 38.06 },
+  { label: "BERLIN", x: 50.04, y: 35.34 },
+  { label: "STOCKHOLM", x: 50.04, y: 29.9 },
+  { label: "ATHENS", x: 52.05, y: 43.3 },
 ];
+
+const stockists = Object.values(stockistsByLocation).flat(2);
 ---
 
 <Layout title="stockists">
@@ -204,9 +242,26 @@ const dots: Dot[] = [
       {
         dots.map((dot) => (
           <div
-            class="bg-primary relative col-start-1 row-start-1 size-4 -translate-x-1/2 -translate-y-1/2 self-start justify-self-start rounded-full"
+            class="group bg-primary relative col-start-1 row-start-1 size-4 -translate-x-1/2 -translate-y-1/2 self-start justify-self-start rounded-full hover:order-last"
             style={`left: ${dot.x}%; top: ${dot.y}%`}
-          />
+          >
+            <div class="text-primary invisible absolute top-1/2 left-full ml-2 w-max -translate-y-1/2 rounded-sm bg-white px-1 pt-0.5 leading-[1.74rem] whitespace-nowrap opacity-0 shadow-[0_1px_3px_rgba(0,0,0,.18),0_-1px_0_rgba(0,0,0,.03)] group-hover:visible group-hover:opacity-100 group-hover:transition-opacity group-hover:duration-100">
+              {Object.entries(
+                Object.groupBy(
+                  stockists.filter((s) => s.dotLabel === dot.label),
+                  (s) => s.heading ?? dot.label,
+                ),
+              ).map(([heading, group], index) => (
+                <>
+                  {index > 0 && <br />}
+                  <p class="font-times text-[1.65rem] font-bold">{heading}</p>
+                  {[...new Set(group!.map((s) => s.name))].map((name) => (
+                    <p class="font-georgia text-[1.28rem] italic">{name}</p>
+                  ))}
+                </>
+              ))}
+            </div>
+          </div>
         ))
       }
     </div>
