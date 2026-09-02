@@ -146,10 +146,10 @@ const stockistsByLocation: Record<string, Stockist[]> = {
     <Image src={map} alt="Map of Notch stockists" class="h-auto w-[82%]" />
 
     <div class="absolute inset-0 flex">
-      <div class="flex-1"></div>
+      <div class="w-1/2 shrink-0"></div>
 
       <div
-        class="flex flex-1 flex-col items-center self-start border-b-2 border-black"
+        class="pt-frame mx-24 flex flex-1 flex-col items-center self-start border-b-2 border-black"
       >
         {
           Object.entries(stockistsByLocation).map(([location, stockists]) => (
