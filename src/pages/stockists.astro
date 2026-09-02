@@ -1,7 +1,13 @@
 ---
+import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
+import map from "../assets/stockists/map.png";
 ---
 
-<Layout title="stockists" overlayHeader>
-  <h1>stockists</h1>
+<Layout title="stockists">
+  <Image
+    src={map}
+    alt="Map of Notch stockists"
+    class="py-frame h-dvh w-screen object-contain"
+  />
 </Layout>
