@@ -153,20 +153,22 @@ const stockistsByLocation: Record<string, Stockist[]> = {
       >
         {
           Object.entries(stockistsByLocation).map(([location, stockists]) => (
-            <details name="stockist" class="w-full">
+            <details name="stockist" class="drawer w-full">
               <summary class="font-times relative flex list-none items-center justify-center border-t-2 border-black py-4 text-3xl [&::-webkit-details-marker]:hidden">
                 {location}
                 <span class="absolute right-4 transition-transform duration-200 [[open]>summary>&]:rotate-90">
                   ❯
                 </span>
               </summary>
-              {stockists.map((stockist) => (
-                <div>
-                  <p>{stockist.name}</p>
-                  <p>{stockist.address}</p>
-                  <p>{stockist.place}</p>
-                </div>
-              ))}
+              <div class="min-h-0">
+                {stockists.map((stockist) => (
+                  <div>
+                    <p>{stockist.name}</p>
+                    <p>{stockist.address}</p>
+                    <p>{stockist.place}</p>
+                  </div>
+                ))}
+              </div>
             </details>
           ))
         }
@@ -174,3 +176,24 @@ const stockistsByLocation: Record<string, Stockist[]> = {
     </div>
   </div>
 </Layout>
+
+<style>
+  .drawer::details-content {
+    display: grid;
+    grid-template-rows: 0fr;
+    overflow: clip;
+    transition:
+      grid-template-rows 200ms ease-out,
+      content-visibility 200ms allow-discrete;
+  }
+
+  .drawer[open]::details-content {
+    grid-template-rows: 1fr;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .drawer::details-content {
+      transition: none;
+    }
+  }
+</style>
