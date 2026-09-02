@@ -9,6 +9,13 @@ type Stockist = {
   place: string;
 };
 
+type Dot = {
+  label: string;
+  location: keyof typeof stockistsByLocation;
+  x: number;
+  y: number;
+};
+
 const stockistsByLocation: Record<string, [Stockist[], Stockist[]]> = {
   "NEW YORK": [
     [
@@ -170,6 +177,19 @@ const stockistsByLocation: Record<string, [Stockist[], Stockist[]]> = {
     [],
   ],
 };
+
+const dots: Dot[] = [
+  { label: "SAN FRANCISCO", location: "CALIFORNIA", x: 14.58, y: 41.55 },
+  { label: "SAN DIEGO", location: "CALIFORNIA", x: 15.53, y: 44.08 },
+  { label: "MEXICO CITY", location: "MEXICO", x: 19.55, y: 52.23 },
+  { label: "NEW YORK", location: "NEW YORK", x: 27.17, y: 41.55 },
+  { label: "GLASGOW", location: "SCOTLAND", x: 45.17, y: 32.62 },
+  { label: "LONDON", location: "ENGLAND", x: 46.44, y: 35.73 },
+  { label: "PARIS", location: "FRANCE", x: 46.86, y: 38.06 },
+  { label: "BERLIN", location: "GERMANY", x: 50.04, y: 35.34 },
+  { label: "STOCKHOLM", location: "SWEDEN", x: 50.04, y: 29.9 },
+  { label: "ATHENS", location: "GREECE", x: 52.05, y: 43.3 },
+];
 ---
 
 <Layout title="stockists">
@@ -177,11 +197,14 @@ const stockistsByLocation: Record<string, [Stockist[], Stockist[]]> = {
     <div class="relative col-span-full row-start-1 w-[82%]">
       <Image src={map} alt="Map of Notch stockists" class="h-auto w-full" />
 
-      <div
-        class="bg-primary absolute size-4 -translate-x-1/2 -translate-y-1/2 rounded-full"
-        style="left: 50%; top: 50%"
-      >
-      </div>
+      {
+        dots.map((dot) => (
+          <div
+            class="bg-primary absolute size-4 -translate-x-1/2 -translate-y-1/2 rounded-full"
+            style={`left: ${dot.x}%; top: ${dot.y}%`}
+          />
+        ))
+      }
     </div>
 
     <div
