@@ -2,22 +2,163 @@
 import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 import map from "../assets/stockists/map.png";
+
+type Stockist = {
+  name: string;
+  address: string;
+  place: string;
+};
+
+const stockistsByLocation: Record<string, Stockist[]> = {
+  "NEW YORK": [
+    {
+      name: "",
+      address: "",
+      place: "",
+    },
+    {
+      name: "",
+      address: "",
+      place: "",
+    },
+    {
+      name: "",
+      address: "",
+      place: "",
+    },
+    {
+      name: "",
+      address: "",
+      place: "",
+    },
+    {
+      name: "",
+      address: "",
+      place: "",
+    },
+    {
+      name: "",
+      address: "",
+      place: "",
+    },
+  ],
+  CALIFORNIA: [
+    {
+      name: "",
+      address: "",
+      place: "",
+    },
+    {
+      name: "",
+      address: "",
+      place: "",
+    },
+    {
+      name: "",
+      address: "",
+      place: "",
+    },
+    {
+      name: "",
+      address: "",
+      place: "",
+    },
+    {
+      name: "",
+      address: "",
+      place: "",
+    },
+  ],
+  MEXICO: [
+    {
+      name: "",
+      address: "",
+      place: "",
+    },
+  ],
+  SCOTLAND: [
+    {
+      name: "",
+      address: "",
+      place: "",
+    },
+  ],
+  ENGLAND: [
+    {
+      name: "",
+      address: "",
+      place: "",
+    },
+    {
+      name: "",
+      address: "",
+      place: "",
+    },
+    {
+      name: "",
+      address: "",
+      place: "",
+    },
+  ],
+  FRANCE: [
+    {
+      name: "",
+      address: "",
+      place: "",
+    },
+    {
+      name: "",
+      address: "",
+      place: "",
+    },
+    {
+      name: "",
+      address: "",
+      place: "",
+    },
+  ],
+  GERMANY: [
+    {
+      name: "",
+      address: "",
+      place: "",
+    },
+  ],
+  SWEDEN: [
+    {
+      name: "",
+      address: "",
+      place: "",
+    },
+  ],
+  GREECE: [
+    {
+      name: "",
+      address: "",
+      place: "",
+    },
+  ],
+};
 ---
 
 <Layout title="stockists">
-  <div class="relative py-frame">
+  <div class="py-frame relative">
     <Image src={map} alt="Map of Notch stockists" class="h-auto w-[82%]" />
 
-    <div class="absolute">
-      <details name="stockists">
-        <summary>foo</summary>
-        <p>bar</p>
-      </details>
+    <div class="absolute inset-0 flex">
+      <div class="flex-1"></div>
 
-      <details name="stockists">
-        <summary>foo</summary>
-        <p>bar</p>
-      </details>
+      <div class="py-frame flex flex-1 flex-col items-center">
+        <details name="stockists">
+          <summary>foo</summary>
+          <p>bar</p>
+        </details>
+
+        <details name="stockists">
+          <summary>foo</summary>
+          <p>bar</p>
+        </details>
+      </div>
     </div>
   </div>
 </Layout>
