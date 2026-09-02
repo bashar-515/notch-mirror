@@ -149,15 +149,20 @@ const stockistsByLocation: Record<string, Stockist[]> = {
       <div class="flex-1"></div>
 
       <div class="py-frame flex flex-1 flex-col items-center">
-        <details name="stockists">
-          <summary>foo</summary>
-          <p>bar</p>
-        </details>
-
-        <details name="stockists">
-          <summary>foo</summary>
-          <p>bar</p>
-        </details>
+        {
+          Object.entries(stockistsByLocation).map(([location, stockists]) => (
+            <details name="stockist">
+              <summary>{location}</summary>
+              {stockists.map((stockist) => (
+                <div>
+                  <p>{stockist.name}</p>
+                  <p>{stockist.address}</p>
+                  <p>{stockist.place}</p>
+                </div>
+              ))}
+            </details>
+          ))
+        }
       </div>
     </div>
   </div>
