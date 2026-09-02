@@ -194,13 +194,17 @@ const dots: Dot[] = [
 
 <Layout title="stockists">
   <div class="py-frame grid grid-cols-2">
-    <div class="relative col-span-full row-start-1 w-[82%] self-start">
-      <Image src={map} alt="Map of Notch stockists" class="h-auto w-full" />
+    <div class="col-span-full row-start-1 grid w-[82%] self-start">
+      <Image
+        src={map}
+        alt="Map of Notch stockists"
+        class="col-start-1 row-start-1 h-auto w-full"
+      />
 
       {
         dots.map((dot) => (
           <div
-            class="bg-primary absolute size-4 -translate-x-1/2 -translate-y-1/2 rounded-full"
+            class="bg-primary relative col-start-1 row-start-1 size-4 -translate-x-1/2 -translate-y-1/2 self-start justify-self-start rounded-full"
             style={`left: ${dot.x}%; top: ${dot.y}%`}
           />
         ))
