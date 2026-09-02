@@ -142,37 +142,37 @@ const stockistsByLocation: Record<string, Stockist[]> = {
 ---
 
 <Layout title="stockists">
-  <div class="py-frame relative">
-    <Image src={map} alt="Map of Notch stockists" class="h-auto w-[82%]" />
+  <div class="py-frame grid grid-cols-2">
+    <Image
+      src={map}
+      alt="Map of Notch stockists"
+      class="col-span-full row-start-1 h-auto w-[82%]"
+    />
 
-    <div class="absolute inset-0 flex">
-      <div class="w-1/2 shrink-0"></div>
-
-      <div
-        class="pt-frame mx-24 flex flex-1 flex-col items-center self-start border-b-2 border-black"
-      >
-        {
-          Object.entries(stockistsByLocation).map(([location, stockists]) => (
-            <details name="stockist" class="drawer w-full">
-              <summary class="font-times relative flex list-none items-center justify-center border-t-2 border-black py-4 text-3xl [&::-webkit-details-marker]:hidden">
-                {location}
-                <span class="absolute right-4 transition-transform duration-200 [[open]>summary>&]:rotate-90">
-                  ❯
-                </span>
-              </summary>
-              <div class="min-h-0">
-                {stockists.map((stockist) => (
-                  <div>
-                    <p>{stockist.name}</p>
-                    <p>{stockist.address}</p>
-                    <p>{stockist.place}</p>
-                  </div>
-                ))}
-              </div>
-            </details>
-          ))
-        }
-      </div>
+    <div
+      class="col-start-2 row-start-1 mx-24 flex flex-col items-center self-start border-b-2 border-black"
+    >
+      {
+        Object.entries(stockistsByLocation).map(([location, stockists]) => (
+          <details name="stockist" class="drawer w-full">
+            <summary class="font-times relative flex list-none items-center justify-center border-t-2 border-black py-4 text-3xl [&::-webkit-details-marker]:hidden">
+              {location}
+              <span class="absolute right-4 transition-transform duration-200 [[open]>summary>&]:rotate-90">
+                ❯
+              </span>
+            </summary>
+            <div class="min-h-0">
+              {stockists.map((stockist) => (
+                <div>
+                  <p>{stockist.name}</p>
+                  <p>{stockist.address}</p>
+                  <p>{stockist.place}</p>
+                </div>
+              ))}
+            </div>
+          </details>
+        ))
+      }
     </div>
   </div>
 </Layout>
