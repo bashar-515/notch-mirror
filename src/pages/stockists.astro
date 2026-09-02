@@ -174,11 +174,15 @@ const stockistsByLocation: Record<string, [Stockist[], Stockist[]]> = {
 
 <Layout title="stockists">
   <div class="py-frame grid grid-cols-2">
-    <Image
-      src={map}
-      alt="Map of Notch stockists"
-      class="col-span-full row-start-1 h-auto w-[82%]"
-    />
+    <div class="relative col-span-full row-start-1 w-[82%]">
+      <Image src={map} alt="Map of Notch stockists" class="h-auto w-full" />
+
+      <div
+        class="bg-primary absolute size-4 -translate-x-1/2 -translate-y-1/2 rounded-full"
+        style="left: 50%; top: 50%"
+      >
+      </div>
+    </div>
 
     <div
       class="col-start-2 row-start-1 mx-24 flex flex-col items-center self-start border-b-2 border-black"
