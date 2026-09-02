@@ -23,8 +23,22 @@ type Stockist = {
   heading?: string;
 };
 
+const boxAnchor = {
+  top: "top-full left-1/2 mt-2 -translate-x-1/2",
+  bottom: "bottom-full left-1/2 mb-2 -translate-x-1/2",
+  left: "top-1/2 left-full ml-2 -translate-y-1/2",
+  right: "top-1/2 right-full mr-2 -translate-y-1/2",
+  "top-left": "top-full left-full mt-1 ml-1",
+  "top-right": "top-full right-full mt-1 mr-1",
+  "bottom-left": "bottom-full left-full mb-1 ml-1",
+  "bottom-right": "right-full bottom-full mr-1 mb-1",
+};
+
+type BoxAnchor = keyof typeof boxAnchor;
+
 type Dot = {
   label: DotLabel;
+  anchor: BoxAnchor;
   x: number;
   y: number;
 };
@@ -215,16 +229,16 @@ const stockistsByLocation: Record<string, [Stockist[], Stockist[]]> = {
 };
 
 const dots: Dot[] = [
-  { label: "SAN FRANCISCO", x: 14.58, y: 41.55 },
-  { label: "SAN DIEGO", x: 15.53, y: 44.08 },
-  { label: "MEXICO CITY", x: 19.55, y: 52.23 },
-  { label: "NEW YORK", x: 27.17, y: 41.55 },
-  { label: "GLASGOW", x: 45.17, y: 32.62 },
-  { label: "LONDON", x: 46.44, y: 35.73 },
-  { label: "PARIS", x: 46.86, y: 38.06 },
-  { label: "BERLIN", x: 50.04, y: 35.34 },
-  { label: "STOCKHOLM", x: 50.04, y: 29.9 },
-  { label: "ATHENS", x: 52.05, y: 43.3 },
+  { label: "SAN FRANCISCO", anchor: "bottom", x: 14.58, y: 41.55 },
+  { label: "SAN DIEGO", anchor: "left", x: 15.53, y: 44.08 },
+  { label: "MEXICO CITY", anchor: "left", x: 19.55, y: 52.23 },
+  { label: "NEW YORK", anchor: "left", x: 27.17, y: 41.55 },
+  { label: "GLASGOW", anchor: "bottom-right", x: 45.17, y: 32.62 },
+  { label: "LONDON", anchor: "top-right", x: 46.44, y: 35.73 },
+  { label: "PARIS", anchor: "right", x: 46.86, y: 38.06 },
+  { label: "BERLIN", anchor: "bottom-left", x: 50.04, y: 35.34 },
+  { label: "STOCKHOLM", anchor: "bottom-left", x: 50.04, y: 29.9 },
+  { label: "ATHENS", anchor: "top", x: 52.05, y: 43.3 },
 ];
 
 const stockists = Object.values(stockistsByLocation).flat(2);
@@ -245,7 +259,12 @@ const stockists = Object.values(stockistsByLocation).flat(2);
             class="group bg-primary relative col-start-1 row-start-1 size-4 -translate-x-1/2 -translate-y-1/2 self-start justify-self-start rounded-full hover:order-last"
             style={`left: ${dot.x}%; top: ${dot.y}%`}
           >
-            <div class="text-primary invisible absolute top-1/2 left-full ml-2 w-max -translate-y-1/2 rounded-sm bg-white px-1 pt-0.5 leading-[1.74rem] whitespace-nowrap opacity-0 shadow-[0_1px_3px_rgba(0,0,0,.18),0_-1px_0_rgba(0,0,0,.03)] group-hover:visible group-hover:opacity-100 group-hover:transition-opacity group-hover:duration-100">
+            <div
+              class:list={[
+                "text-primary invisible absolute w-max rounded-sm bg-white px-1 pt-0.5 leading-[1.74rem] whitespace-nowrap opacity-0 shadow-[0_1px_3px_rgba(0,0,0,.18),0_-1px_0_rgba(0,0,0,.03)] group-hover:visible group-hover:opacity-100 group-hover:transition-opacity group-hover:duration-100",
+                boxAnchor[dot.anchor],
+              ]}
+            >
               {Object.entries(
                 Object.groupBy(
                   stockists.filter((s) => s.dotLabel === dot.label),
