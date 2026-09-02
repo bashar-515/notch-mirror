@@ -5,7 +5,19 @@ import map from "../assets/stockists/map.png";
 ---
 
 <Layout title="stockists">
-  <div class="py-frame">
+  <div class="relative py-frame">
     <Image src={map} alt="Map of Notch stockists" class="h-auto w-[82%]" />
+
+    <div class="absolute">
+      <details name="stockists">
+        <summary>foo</summary>
+        <p>bar</p>
+      </details>
+
+      <details name="stockists">
+        <summary>foo</summary>
+        <p>bar</p>
+      </details>
+    </div>
   </div>
 </Layout>
