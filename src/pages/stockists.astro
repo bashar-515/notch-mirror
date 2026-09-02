@@ -152,7 +152,9 @@ const stockistsByLocation: Record<string, Stockist[]> = {
         {
           Object.entries(stockistsByLocation).map(([location, stockists]) => (
             <details name="stockist">
-              <summary>{location}</summary>
+              <summary class="list-none [&::-webkit-details-marker]:hidden">
+                {location}
+              </summary>
               {stockists.map((stockist) => (
                 <div>
                   <p>{stockist.name}</p>
