@@ -184,7 +184,7 @@ const stockistsByLocation: Record<string, [Stockist[], Stockist[]]> = {
       class="col-start-2 row-start-1 mx-24 flex flex-col items-center self-start border-b-2 border-black"
     >
       {
-        Object.entries(stockistsByLocation).map(([location, stockists]) => (
+        Object.entries(stockistsByLocation).map(([location, columns]) => (
           <details name="stockist" class="drawer w-full">
             <summary class="font-times relative flex list-none items-center justify-center border-t-2 border-black py-4 text-3xl [&::-webkit-details-marker]:hidden">
               {location}
@@ -193,13 +193,19 @@ const stockistsByLocation: Record<string, [Stockist[], Stockist[]]> = {
               </span>
             </summary>
             <div class="min-h-0">
-              {stockists.map((stockist) => (
-                <div>
-                  <p>{stockist.name}</p>
-                  <p>{stockist.address}</p>
-                  <p>{stockist.place}</p>
-                </div>
-              ))}
+              <div class="flex gap-12 pb-6">
+                {columns.map((column) => (
+                  <div class="flex flex-1 flex-col gap-6">
+                    {column.map((stockist) => (
+                      <div class="font-times ml-8 text-[1.375rem] leading-none">
+                        <p class="font-bold">{stockist.name}</p>
+                        <p>{stockist.address},</p>
+                        <p>{stockist.place}</p>
+                      </div>
+                    ))}
+                  </div>
+                ))}
+              </div>
             </div>
           </details>
         ))
