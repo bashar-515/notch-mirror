@@ -151,7 +151,7 @@ const stockistsByLocation: Record<string, Stockist[]> = {
       <div class="py-frame flex flex-1 flex-col items-center">
         {
           Object.entries(stockistsByLocation).map(([location, stockists]) => (
-            <details name="stockist">
+            <details name="stockist" class="w-full">
               <summary class="list-none [&::-webkit-details-marker]:hidden">
                 {location}
               </summary>
