@@ -1,13 +1,15 @@
 ---
-import { Image } from "astro:assets";
+import { getImage } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
-import map from "../assets/stockists/map.png";
+import mapSrc from "../assets/stockists/map.png";
+
+const map = await getImage({ src: mapSrc });
 ---
 
 <Layout title="stockists">
-  <Image
-    src={map}
-    alt="Map of Notch stockists"
-    class="py-frame h-dvh w-screen object-contain"
-  />
+  <div
+    class="h-dvh bg-contain bg-center bg-no-repeat"
+    style={`background-image: url(${map.src})`}
+  >
+  </div>
 </Layout>
