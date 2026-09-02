@@ -250,6 +250,10 @@ const stockists = Object.values(stockistsByLocation).flat(2);
       <Image
         src={map}
         alt="Map of Notch stockists"
+        widths={[960, 1440, 1920, 2880]}
+        sizes="82vw"
+        loading="eager"
+        fetchpriority="high"
         class="col-start-1 row-start-1 h-auto w-full"
       />
 
