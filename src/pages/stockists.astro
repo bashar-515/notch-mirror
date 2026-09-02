@@ -9,134 +9,165 @@ type Stockist = {
   place: string;
 };
 
-const stockistsByLocation: Record<string, Stockist[]> = {
+const stockistsByLocation: Record<string, [Stockist[], Stockist[]]> = {
   "NEW YORK": [
-    {
-      name: "Soho News International",
-      address: "186 Prince St",
-      place: "New York, NY 10012",
-    },
-    {
-      name: "McNally Jackson",
-      address: "134 Prince St",
-      place: "New York, NY 10012",
-    },
-    {
-      name: "Iconic Magazines",
-      address: "188 Mulberry St",
-      place: "New York, NY 10012",
-    },
-    {
-      name: "Casa Magazines",
-      address: "22 8th Ave",
-      place: "New York, NY 10014",
-    },
-    {
-      name: "The Word is Change",
-      address: "368 Tompkins Ave",
-      place: "Brooklyn, NY 11216",
-    },
-    {
-      name: "McNally Jackson",
-      address: "76 N. 4th St",
-      place: "Brooklyn, NY 11249",
-    },
+    [
+      {
+        name: "Soho News International",
+        address: "186 Prince St",
+        place: "New York, NY 10012",
+      },
+      {
+        name: "McNally Jackson",
+        address: "134 Prince St",
+        place: "New York, NY 10012",
+      },
+      {
+        name: "Iconic Magazines",
+        address: "188 Mulberry St",
+        place: "New York, NY 10012",
+      },
+    ],
+    [
+      {
+        name: "Casa Magazines",
+        address: "22 8th Ave",
+        place: "New York, NY 10014",
+      },
+      {
+        name: "The Word is Change",
+        address: "368 Tompkins Ave",
+        place: "Brooklyn, NY 11216",
+      },
+      {
+        name: "McNally Jackson",
+        address: "76 N. 4th St",
+        place: "Brooklyn, NY 11249",
+      },
+    ],
   ],
   CALIFORNIA: [
-    {
-      name: "Smoke Signals Newsstand",
-      address: "2223 Polk St",
-      place: "San Francisco, CA 94109",
-    },
-    {
-      name: "Green Apple Books",
-      address: "506 Clement St",
-      place: "San Francisco, CA 94118",
-    },
-    {
-      name: "34 Trinity Arts & News",
-      address: "34 Trinity Pl",
-      place: "San Francisco, CA 94104",
-    },
-    {
-      name: "Beeks Books",
-      address: "2500 Telegraph Ave",
-      place: "Berkeley, CA 94704",
-    },
-    {
-      name: "Verbatim Books",
-      address: "3793 30th St",
-      place: "San Diego, CA 92104",
-    },
+    [
+      {
+        name: "Smoke Signals Newsstand",
+        address: "2223 Polk St",
+        place: "San Francisco, CA 94109",
+      },
+      {
+        name: "Green Apple Books",
+        address: "506 Clement St",
+        place: "San Francisco, CA 94118",
+      },
+      {
+        name: "34 Trinity Arts & News",
+        address: "34 Trinity Pl",
+        place: "San Francisco, CA 94104",
+      },
+    ],
+    [
+      {
+        name: "Beeks Books",
+        address: "2500 Telegraph Ave",
+        place: "Berkeley, CA 94704",
+      },
+      {
+        name: "Verbatim Books",
+        address: "3793 30th St",
+        place: "San Diego, CA 92104",
+      },
+    ],
   ],
   MEXICO: [
-    {
-      name: "Casa Bosques",
-      address: "Córdoba 25, Roma Nte., Cuauhtémoc, 06700",
-      place: "Mexico City, CDMX",
-    },
+    [
+      {
+        name: "Casa Bosques",
+        address: "Córdoba 25, Roma Nte., Cuauhtémoc, 06700",
+        place: "Mexico City, CDMX",
+      },
+    ],
+    [],
   ],
   SCOTLAND: [
-    {
-      name: "Mount Florida Books",
-      address: "1069 Cathcart Rd",
-      place: "Glasgow G42 9AF",
-    },
+    [
+      {
+        name: "Mount Florida Books",
+        address: "1069 Cathcart Rd",
+        place: "Glasgow G42 9AF",
+      },
+    ],
+    [],
   ],
   ENGLAND: [
-    {
-      name: "Burley Fisher Books",
-      address: "400 Kingsland Rd",
-      place: "London, E8 4AA",
-    },
-    {
-      name: "Peckham Books",
-      address: "20 Maxted Rd",
-      place: "London, SE15 4LF",
-    },
-    {
-      name: "UNITOM Books",
-      address: "1a Stevenson Square",
-      place: "Manchester, M1 1DN",
-    },
+    [
+      {
+        name: "Burley Fisher Books",
+        address: "400 Kingsland Rd",
+        place: "London, E8 4AA",
+      },
+      {
+        name: "Peckham Books",
+        address: "20 Maxted Rd",
+        place: "London, SE15 4LF",
+      },
+    ],
+    [
+      {
+        name: "UNITOM Books",
+        address: "1a Stevenson Square",
+        place: "Manchester, M1 1DN",
+      },
+    ],
   ],
   FRANCE: [
-    {
-      name: "Cahier Central",
-      address: "26 Rue du Château d'Eau",
-      place: "75010 Paris",
-    },
-    {
-      name: "The Red Wheelbarrow",
-      address: "11 Rue de Médicis",
-      place: "75006 Paris",
-    },
-    {
-      name: "Bouquiniste",
-      address: "18 Quai de Conti",
-      place: "75006 Paris",
-    },
+    [
+      {
+        name: "Cahier Central",
+        address: "26 Rue du Château d'Eau",
+        place: "75010 Paris",
+      },
+      {
+        name: "The Red Wheelbarrow",
+        address: "11 Rue de Médicis",
+        place: "75006 Paris",
+      },
+    ],
+    [
+      {
+        name: "Bouquiniste",
+        address: "18 Quai de Conti",
+        place: "75006 Paris",
+      },
+    ],
   ],
   GERMANY: [
-    {
-      name: "Zur schwankenden Weltkugel",
-      address: "Kastanienallee 85",
-      place: "10435 Berlin",
-    },
+    [
+      {
+        name: "Zur schwankenden Weltkugel",
+        address: "Kastanienallee 85",
+        place: "10435 Berlin",
+      },
+    ],
+    [],
   ],
   SWEDEN: [
-    {
-      name: "Papercut",
-      address: "Krukmakargatan 24",
-      place: "118 51 Stockholm",
-    },
+    [
+      {
+        name: "Papercut",
+        address: "Krukmakargatan 24",
+        place: "118 51 Stockholm",
+      },
+    ],
+    [],
   ],
   GREECE: [
-    {
-      name: "Bookbar by Kaktos",
-      address: "Aiolou 39",
-      place: "Athens 105 51",
-    },
+    [
+      {
+        name: "Bookbar by Kaktos",
+        address: "Aiolou 39",
+        place: "Athens 105 51",
+      },
+    ],
+    [],
   ],
 };
 ---
