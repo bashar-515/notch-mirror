@@ -90,10 +90,7 @@ const { title, name, heading, location, description, topImages, bottomImages } =
   let progress = 0.5;
 
   const apply = () => {
-    const locked = progress < 1;
-
-    document.documentElement.style.overflow = locked ? "hidden" : "";
-    if (locked) window.scrollTo(0, 0);
+    if (progress < 1) window.scrollTo(0, 0);
 
     for (const track of tracks) {
       track.style.transform = `translateX(${-progress * overflow(track)}px)`;
@@ -117,6 +114,10 @@ const { title, name, heading, location, description, topImages, bottomImages } =
     },
     { passive: false },
   );
+
+  window.addEventListener("scroll", () => {
+    if (progress < 1 && window.scrollY > 0) window.scrollTo(0, 0);
+  });
 
   window.addEventListener("resize", apply);
 </script>
