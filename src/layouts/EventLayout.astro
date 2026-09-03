@@ -1,11 +1,25 @@
 ---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
 import Layout from "./Layout.astro";
 
-type Props = { title: string };
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "../assets/events/*/{top,bottom}/*.{jpg,png}",
+  { eager: true },
+);
 
-const { title } = Astro.props;
+type Props = {
+  title: string;
+  name: string;
+  heading: string;
+  location: string;
+  description: string;
+  topImages: string[];
+  bottomImages: string[];
+};
+
+const { title, name, heading, location, description, topImages, bottomImages } =
+  Astro.props;
 ---
 
-<Layout title={title}>
-  <p>event</p>
-</Layout>
+<Layout title={title} />
