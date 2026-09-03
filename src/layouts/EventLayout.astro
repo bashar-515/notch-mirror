@@ -23,9 +23,9 @@ const { title, name, heading, location, description, topImages, bottomImages } =
 ---
 
 <Layout title={title}>
-  <div class="px-frame flex flex-1 flex-col justify-between pt-8 pb-24">
+  <div class="flex flex-1 flex-col justify-between pt-8 pb-24">
     <div class="h-68 overflow-hidden">
-      <div data-track class="flex h-full w-max gap-3">
+      <div data-track class="px-frame flex h-full w-max gap-3">
         {
           topImages.map((image) => (
             <Image
@@ -40,7 +40,7 @@ const { title, name, heading, location, description, topImages, bottomImages } =
       </div>
     </div>
 
-    <div class="flex items-center justify-between py-8">
+    <div class="px-frame flex items-center justify-between py-8">
       <h1 class="text-3xl leading-none tracking-tighter whitespace-pre">
         {`${name}\n${heading}\n${location}`}
       </h1>
@@ -55,7 +55,7 @@ const { title, name, heading, location, description, topImages, bottomImages } =
     </div>
 
     <div class="h-68 overflow-hidden">
-      <div data-track class="flex h-full w-max gap-3">
+      <div data-track class="px-frame flex h-full w-max gap-3">
         {
           bottomImages.map((image) => (
             <Image
