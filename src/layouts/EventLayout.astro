@@ -23,8 +23,8 @@ const { title, name, heading, location, description, topImages, bottomImages } =
 ---
 
 <Layout title={title}>
-  <div class="flex flex-1 flex-col justify-center">
-    <div class="h-64 overflow-hidden">
+  <div class="px-frame flex flex-1 flex-col justify-between pt-8 pb-24">
+    <div class="h-68 overflow-hidden">
       <div class="flex h-full w-max">
         {
           topImages.map((image) => (
@@ -38,15 +38,17 @@ const { title, name, heading, location, description, topImages, bottomImages } =
       </div>
     </div>
 
-    <div>
-      <h1>{name}</h1>
-      <h1>{heading}</h1>
-      <h1>{location}</h1>
+    <div class="flex">
+      <div>
+        <h1>{name}</h1>
+        <h1>{heading}</h1>
+        <h1>{location}</h1>
+      </div>
 
       <p>{description}</p>
     </div>
 
-    <div class="h-64 overflow-hidden">
+    <div class="h-68 overflow-hidden">
       <div class="flex h-full w-max">
         {
           bottomImages.map((image) => (

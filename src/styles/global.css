@@ -33,7 +33,7 @@ body {
 }
 
 @utility px-frame {
-  @apply px-26;
+  @apply px-21;
 }
 
 @utility pt-frame {
