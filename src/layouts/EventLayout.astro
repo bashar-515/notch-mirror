@@ -22,4 +22,42 @@ const { title, name, heading, location, description, topImages, bottomImages } =
   Astro.props;
 ---
 
-<Layout title={title} />
+<Layout title={title}>
+  <div class="flex flex-1 flex-col justify-center">
+    <div class="h-64 overflow-hidden">
+      <div class="flex h-full w-max">
+        {
+          topImages.map((image) => (
+            <Image
+              alt=""
+              src={images[`../assets${image}`]!.default}
+              class="h-full w-auto"
+            />
+          ))
+        }
+      </div>
+    </div>
+
+    <div>
+      <h1>{name}</h1>
+      <h1>{heading}</h1>
+      <h1>{location}</h1>
+
+      <p>{description}</p>
+    </div>
+
+    <div class="h-64 overflow-hidden">
+      <div class="flex h-full w-max">
+        {
+          bottomImages.map((image) => (
+            <Image
+              alt=""
+              src={images[`../assets${image}`]!.default}
+              class="h-full w-auto"
+            />
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</Layout>
